@@ -97,9 +97,7 @@
    "metadata": {},
    "source": [
     "Dans le pire des cas, pour un tableau de taille `n`, il faudra effectuer:\n",
-    "\n",
     "$$ 1+2+\\cdots + (n-2) + (n-1)=\\dfrac{n}{2}\\times(n-1)$$\n",
-    "\n",
     "comparaisons et échanges.\n",
     "Le coût (on dit aussi *complexité*) est **quadratique**. On écrit souvent que la complexité est en $\\Theta(n²)$."
    ]

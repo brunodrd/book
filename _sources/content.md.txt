@@ -1,4 +1,0 @@
-Les algorithmes de première
-===========================
-
-Principe, description et analyse.
