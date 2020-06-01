@@ -10,7 +10,7 @@ Voir une animation à cette [adresse](http://lwh.free.fr/pages/algo/tri/tri_sele
 On peut formaliser l'algorithme du tri par sélection avec la procédure décrite ci-dessous.  
 
 ```{note}
-Contrairement à une fonction, une procédure ne renvoit rien et ne modifie pas ses arguments
+Contrairement à une fonction, une procédure ne renvoit rien et modifie généralement ses arguments.
 ```
 
 ```
