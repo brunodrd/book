@@ -26,7 +26,7 @@
     "On peut formaliser l'algorithme du tri par sélection avec la procédure décrite ci-dessous.  \n",
     "\n",
     "```{note}\n",
-    "Contrairement à une fonction, une procédure ne renvoit rien et ne modifie pas ses arguments\n",
+    "Contrairement à une fonction, une procédure ne renvoit rien et modifie généralement ses arguments.\n",
     "```\n",
     "\n",
     "```\n",
