@@ -31,7 +31,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Tri par insertion" href="tri_insertion_v2.html" />
+    <link rel="prev" title="Tri par sélection" href="tri_selection.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -83,6 +83,9 @@
 </li>
   <li class="">
     <a href="tri_insertion_v2.html">Tri par insertion</a>
+  </li>
+  <li class="">
+    <a href="tri_selection.html">Tri par sélection</a>
   </li>
   <li class="active">
     <a href="">Complexité</a>
@@ -173,11 +176,8 @@
 <div class="section" id="introduction-complexite-ou-cout-d-un-algorithme">
 <h1>Introduction: complexité ou coût d’un algorithme<a class="headerlink" href="#introduction-complexite-ou-cout-d-un-algorithme" title="Permalink to this headline">¶</a></h1>
 <p>Pour traiter un même problème, il existe souvent plusieurs algorithmes. Un critère de choix possible est le <em>temps d’exécution</em> le plus faible.<br />
-<strong>Le temps d’exécution caractérise le coût -appelé complexité- d’un algorithme</strong>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>En réalité on ne va pas mesurer réellement le temps d’exécution mais plutôt utiliser un <em>modèle</em> simplifié, indépendant de la machine utilisée et dont l’unité de mesure du coût est une <em>opération</em> (affectation, comparaison, etc..)</p>
-</div>
+<strong>Le temps d’exécution caractérise le coût -appelé complexité- d’un algorithme</strong>.<br />
+En réalité on ne va pas mesurer réellement le temps d’exécution mais plutôt utiliser un <em>modèle</em> simplifié, indépendant de la machine utilisée et dont l’unité de mesure du coût est une <em>opération</em> (affectation, comparaison, etc..)</p>
 </div>
 <div class="section" id="complexite-lineaire">
 <h1>Complexité linéaire<a class="headerlink" href="#complexite-lineaire" title="Permalink to this headline">¶</a></h1>
@@ -196,6 +196,7 @@ Il n’est pas utile en première NSI d’aller vers un niveau de détail tel qu
 </div>
 <div class="section" id="autres-cas-courants">
 <h1>Autres cas courants<a class="headerlink" href="#autres-cas-courants" title="Permalink to this headline">¶</a></h1>
+<p>Si la complexité ne <strong>dépend pas</strong> de la taille de l’entrée, l’algorithme a une <strong>complexité constante</strong>.</p>
 <p>Existe-t-il des algorithmes plus performants que ceux ayant une complexité linéaire ?<br />
 <strong>Oui</strong>, les algorithmes ayant une <strong>complexité logarithmique</strong>. La fonction logarithme est une fonction qui croît très lentement.</p>
 <p>Existe-t-il des algorithmes moins performants que ceux ayant une complexité linéaire ?<br />
@@ -222,10 +223,6 @@ Il n’est pas utile en première NSI d’aller vers un niveau de détail tel qu
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Si la complexité ne <strong>dépend pas</strong> de la taille de l’entrée, l’algorithme a une <strong>complexité constante</strong>.</p>
-</div>
 </div>
 <div class="section" id="quelques-exemples">
 <h1>Quelques exemples<a class="headerlink" href="#quelques-exemples" title="Permalink to this headline">¶</a></h1>
@@ -249,6 +246,7 @@ Il n’est pas utile en première NSI d’aller vers un niveau de détail tel qu
 </div>
 </div>
 </div>
+<hr class="docutils" />
 </div>
 
 
@@ -260,7 +258,7 @@ Il n’est pas utile en première NSI d’aller vers un niveau de détail tel qu
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="tri_insertion_v2.html" title="previous page">Tri par insertion</a>
+    <a class='left-prev' id="prev-link" href="tri_selection.html" title="previous page">Tri par sélection</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

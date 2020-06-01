@@ -5,7 +5,7 @@
    "metadata": {},
    "source": [
     "Tri par insertion\n",
-    "---"
+    "============="
    ]
   },
   {
@@ -14,9 +14,9 @@
    "source": [
     "# Principe\n",
     "Voir le principe à l'adresse: \n",
-    "http://lwh.free.fr/pages/algo/tri/tri_insertion.html\n",
+    "[Algorithmes de tri](http://lwh.free.fr/pages/algo/tri/tri_insertion.html)\n",
     "\n",
-    "L'idée directrice est de **parcourir le tableau de la gauche vers la droite, en maintenant la partie déjà triée sur sa gauche**. Concrètement, on va décaler d'une case vers la droite tous les éléments déjà triés, qui sont plus grands que l'élément à classer, puis déposer ce dernier dans la case libérée."
+    "L'idée principal est de **parcourir le tableau de la gauche vers la droite, en maintenant la partie déjà triée sur sa gauche**. Concrètement, on va décaler d'une case vers la droite tous les éléments déjà triés, qui sont plus grands que l'élément à classer, puis déposer ce dernier dans la case libérée."
    ]
   },
   {
@@ -28,7 +28,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 1,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -52,7 +52,7 @@
    "metadata": {},
    "source": [
     "# Validité de l'algorithme\n",
-    "Au début de chaque itération d'index `i`, le sous tableau `t[0..i-1]` est trié (attention, on fait référence aux éléments d'index 0 à `i-1` **inclus**, ce n'est pas une notation python). Cette propriété est appelée **invariant de boucle**. L'invariant doit respecter les deux propriétés suivantes:  "
+    "Au début de chaque itération d'index `i`, le sous tableau `t[0..i-1]` est trié (attention, on fait référence aux éléments d'index 0 à `i-1` **inclus**, ce n'est pas une notation python). Cette propriété est appelée **invariant de boucle**. L'invariant est une propriété qui doit:  "
    ]
   },
   {
@@ -77,7 +77,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Par ailleurs, la combinaison de l'invariant avec la terminaison de la boucle permet de conclure à la validité (on dit *correction*) de l'algorithme. \n",
+    "Par ailleurs, la combinaison de l'invariant avec la **terminaison** de la boucle permet de conclure à la validité, on dit aussi **correction totale**, de l'algorithme. \n",
     "\n",
     "Dans notre cas, à la fin de la boucle, `i = len(t)`. Si on substitue cette valeur dans l'expression de l'invariant, on a :  \n",
     "à l'itération `i = len(t)`, le sous tableau `t[0..len(t)-1]` est trié, soit: \n",
@@ -97,17 +97,23 @@
    "metadata": {},
    "source": [
     "Dans le pire des cas, pour un tableau de taille `n`, il faudra effectuer:\n",
+    "\n",
     "$$ 1+2+\\cdots + (n-2) + (n-1)=\\dfrac{n}{2}\\times(n-1)$$\n",
+    "\n",
     "comparaisons et échanges.\n",
-    "Le coût (on dit aussi *complexité*) est **quadratique**. On écrit souvent que la complexité est en $\\Theta(n²)$."
+    "Le coût (on dit aussi *complexité*) est **quadratique**. On écrit souvent que la complexité est en $\\Theta(n²)$.\n",
+    "\n",
+    "```{note}\n",
+    "Voir le document \"Complexité\" en complément\n",
+    "```"
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": null,
+   "cell_type": "markdown",
    "metadata": {},
-   "outputs": [],
-   "source": []
+   "source": [
+    "---"
+   ]
   }
  ],
  "metadata": {

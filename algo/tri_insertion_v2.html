@@ -31,7 +31,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Complexité" href="complexite.html" />
+    <link rel="next" title="Tri par sélection" href="tri_selection.html" />
     <link rel="prev" title="La recherche dichotomique" href="recherche_dico_v2.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,6 +84,9 @@
 </li>
   <li class="active">
     <a href="">Tri par insertion</a>
+  </li>
+  <li class="">
+    <a href="tri_selection.html">Tri par sélection</a>
   </li>
   <li class="">
     <a href="complexite.html">Complexité</a>
@@ -174,8 +177,8 @@
 <div class="section" id="principe">
 <h1>Principe<a class="headerlink" href="#principe" title="Permalink to this headline">¶</a></h1>
 <p>Voir le principe à l’adresse:
-http://lwh.free.fr/pages/algo/tri/tri_insertion.html</p>
-<p>L’idée directrice est de <strong>parcourir le tableau de la gauche vers la droite, en maintenant la partie déjà triée sur sa gauche</strong>. Concrètement, on va décaler d’une case vers la droite tous les éléments déjà triés, qui sont plus grands que l’élément à classer, puis déposer ce dernier dans la case libérée.</p>
+<a class="reference external" href="http://lwh.free.fr/pages/algo/tri/tri_insertion.html">Algorithmes de tri</a></p>
+<p>L’idée principal est de <strong>parcourir le tableau de la gauche vers la droite, en maintenant la partie déjà triée sur sa gauche</strong>. Concrètement, on va décaler d’une case vers la droite tous les éléments déjà triés, qui sont plus grands que l’élément à classer, puis déposer ce dernier dans la case libérée.</p>
 </div>
 <div class="section" id="implementation-en-python">
 <h1>Implémentation en python<a class="headerlink" href="#implementation-en-python" title="Permalink to this headline">¶</a></h1>
@@ -201,7 +204,7 @@ http://lwh.free.fr/pages/algo/tri/tri_insertion.html</p>
 </div>
 <div class="section" id="validite-de-l-algorithme">
 <h1>Validité de l’algorithme<a class="headerlink" href="#validite-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
-<p>Au début de chaque itération d’index <code class="docutils literal notranslate"><span class="pre">i</span></code>, le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..i-1]</span></code> est trié (attention, on fait référence aux éléments d’index 0 à <code class="docutils literal notranslate"><span class="pre">i-1</span></code> <strong>inclus</strong>, ce n’est pas une notation python). Cette propriété est appelée <strong>invariant de boucle</strong>. L’invariant doit respecter les deux propriétés suivantes:</p>
+<p>Au début de chaque itération d’index <code class="docutils literal notranslate"><span class="pre">i</span></code>, le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..i-1]</span></code> est trié (attention, on fait référence aux éléments d’index 0 à <code class="docutils literal notranslate"><span class="pre">i-1</span></code> <strong>inclus</strong>, ce n’est pas une notation python). Cette propriété est appelée <strong>invariant de boucle</strong>. L’invariant est une propriété qui doit:</p>
 <div class="section" id="etre-verifie-avant-la-premiere-iteration-initialisation">
 <h2>être vérifié avant la première itération (initialisation)<a class="headerlink" href="#etre-verifie-avant-la-premiere-iteration-initialisation" title="Permalink to this headline">¶</a></h2>
 <p>Lorsqu’on est en ligne 5 la première fois, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">1</span></code> et cette propriété se traduit par: la tableau <code class="docutils literal notranslate"><span class="pre">t[0]</span></code> est trié. Ce qui est vrai évidemment car on n’a qu’un seul élément.</p>
@@ -210,7 +213,7 @@ http://lwh.free.fr/pages/algo/tri/tri_insertion.html</p>
 <h2>être conservé (conservation)<a class="headerlink" href="#etre-conserve-conservation" title="Permalink to this headline">¶</a></h2>
 <p><strong>Si l’invariant est vrai avant une itération, il l’est aussi avant la prochaine</strong>.</p>
 <p>Ici pour une itération d’index <code class="docutils literal notranslate"><span class="pre">i</span></code> donné, on va décaler les <code class="docutils literal notranslate"><span class="pre">t[i-1]</span></code>, <code class="docutils literal notranslate"><span class="pre">t[i-2]</span></code>, .. etc, vers la droite pour trouver la place de <code class="docutils literal notranslate"><span class="pre">t[i]</span></code>. On place alors <code class="docutils literal notranslate"><span class="pre">t[i]</span></code>. Ces éléments sont triés et comme on incrémente <code class="docutils literal notranslate"><span class="pre">i</span></code> au début de la boucle <code class="docutils literal notranslate"><span class="pre">for</span></code> de la prochaine itération, l’invariant est conservé.</p>
-<p>Par ailleurs, la combinaison de l’invariant avec la terminaison de la boucle permet de conclure à la validité (on dit <em>correction</em>) de l’algorithme.</p>
+<p>Par ailleurs, la combinaison de l’invariant avec la <strong>terminaison</strong> de la boucle permet de conclure à la validité, on dit aussi <strong>correction totale</strong>, de l’algorithme.</p>
 <p>Dans notre cas, à la fin de la boucle, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">len(t)</span></code>. Si on substitue cette valeur dans l’expression de l’invariant, on a :<br />
 à l’itération <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">len(t)</span></code>, le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..len(t)-1]</span></code> est trié, soit:</p>
 <p><strong>le tableau t est trié, l’algorithme est correct</strong>.</p>
@@ -218,10 +221,16 @@ http://lwh.free.fr/pages/algo/tri/tri_insertion.html</p>
 </div>
 <div class="section" id="efficacite-complexite-de-l-algorithme">
 <h1>Efficacité: complexité de l’algorithme<a class="headerlink" href="#efficacite-complexite-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
-<p>Dans le pire des cas, pour un tableau de taille <code class="docutils literal notranslate"><span class="pre">n</span></code>, il faudra effectuer:
-<span class="math notranslate nohighlight">\($ 1+2+\cdots + (n-2) + (n-1)=\dfrac{n}{2}\times(n-1)\)</span>$
-comparaisons et échanges.
+<p>Dans le pire des cas, pour un tableau de taille <code class="docutils literal notranslate"><span class="pre">n</span></code>, il faudra effectuer:</p>
+<div class="math notranslate nohighlight">
+\[ 1+2+\cdots + (n-2) + (n-1)=\dfrac{n}{2}\times(n-1)\]</div>
+<p>comparaisons et échanges.
 Le coût (on dit aussi <em>complexité</em>) est <strong>quadratique</strong>. On écrit souvent que la complexité est en <span class="math notranslate nohighlight">\(\Theta(n²)\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Voir le document “Complexité” en complément</p>
+</div>
+<hr class="docutils" />
 </div>
 
 
@@ -234,7 +243,7 @@ Le coût (on dit aussi <em>complexité</em>) est <strong>quadratique</strong>. O
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="recherche_dico_v2.html" title="previous page">La recherche dichotomique</a>
-    <a class='right-next' id="next-link" href="complexite.html" title="next page">Complexité</a>
+    <a class='right-next' id="next-link" href="tri_selection.html" title="next page">Tri par sélection</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
