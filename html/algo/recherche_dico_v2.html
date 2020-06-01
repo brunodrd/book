@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>La recherche dichotomique &#8212; Algorithmique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tri par insertion" href="tri_insertion_v2.html" />
+    <link rel="prev" title="Recherche dans un tableau" href="recherche_seq.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo_LBO.jpg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Algorithmique</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../intro.html">Cours d’algorithmique NSI 1ere</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Agorithmes de recherche</p>
+</li>
+  <li class="">
+    <a href="recherche_seq.html">Recherche dans un tableau</a>
+  </li>
+  <li class="active">
+    <a href="">La recherche dichotomique</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Algorithme de tris</p>
+</li>
+  <li class="">
+    <a href="tri_insertion_v2.html">Tri par insertion</a>
+  </li>
+  <li class="">
+    <a href="tri_selection.html">Tri par sélection</a>
+  </li>
+  <li class="">
+    <a href="complexite.html">Complexité</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/algo/recherche_dico_v2.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+            <div class="dropdown-buttons">
+                
+                <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/algo/recherche_dico_v2.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="../_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                
+                
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="la-recherche-dichotomique">
+<h1>La recherche dichotomique<a class="headerlink" href="#la-recherche-dichotomique" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="principe">
+<h1>Principe<a class="headerlink" href="#principe" title="Permalink to this headline">¶</a></h1>
+<p>On souhaite rechercher une valeur <span class="math notranslate nohighlight">\(x\)</span> dans un tableau <span class="math notranslate nohighlight">\(t\)</span> trié (<em>par ordre croissant pour se fixer les idées</em>). L’idée principale est de comparer <span class="math notranslate nohighlight">\(x\)</span> avec la valeur située au milieu du tableau:</p>
+<ul class="simple">
+<li><p>si elle est plus petite, il suffit de restreindre la recherche dans la partie gauche du tableau;</p></li>
+<li><p>sinon, on la restreint à la partie droite de <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>ou alors on a trouvé <span class="math notranslate nohighlight">\(x\)</span></p></li>
+</ul>
+<p>En répétant ce procédé on divise la zone de recherche par deux à chaque fois. Il s’agit d’une application du principe <em>diviser pour régner</em>.</p>
+</div>
+<div class="section" id="implementation-en-python">
+<h1>Implémentation en python<a class="headerlink" href="#implementation-en-python" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">est_trie</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vérifie si t est trié et renvoie un booléen comme réponse</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        
+
+<span class="k">def</span> <span class="nf">recherche_dichotomique</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Renvoie la position de x dans le tableau t trié; None si non trouvé</span>
+<span class="sd">    Précondition: t trié</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">est_trie</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s2">&quot;Erreur: tableau non trié&quot;</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">#gauche</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="c1">#droit</span>
+    <span class="k">while</span> <span class="n">g</span> <span class="o">&lt;=</span> <span class="n">d</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">[</span><span class="n">m</span><span class="p">]:</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">t</span><span class="p">[</span><span class="n">m</span><span class="p">]:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Initialement, <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">0</span></code> et <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">len(t)</span> <span class="pre">-</span> <span class="pre">1</span></code>. On calcule l’index central <span class="math notranslate nohighlight">\(m\)</span> du tableau (<em>ligne 8</em>) en effectuant une <strong>division entière</strong>.<br />
+Ensuite on compare <span class="math notranslate nohighlight">\(x\)</span> à <code class="docutils literal notranslate"><span class="pre">t[m]</span></code>. Suivant le résultat de la comparaison, on ajuste la borne gauche <span class="math notranslate nohighlight">\(g\)</span> ou droite <span class="math notranslate nohighlight">\(d\)</span> de la zone de recherche.</p>
+<p>Si <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">t[m]</span></code> (<em>ligne 13</em>), on a trouvé <span class="math notranslate nohighlight">\(x\)</span> et on renvoie son index.  Il se peut que l’on sorte de la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> (si <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">&gt;</span> <span class="pre">d</span></code>, c’est dire que la zone de recherche est vide), dans ce cas, on signale l’absence de <span class="math notranslate nohighlight">\(x\)</span> en retournant <code class="docutils literal notranslate"><span class="pre">None</span></code> (<em>ligne 15</em>).</p>
+</div>
+<div class="section" id="terminaison-de-l-algorithme">
+<h1>Terminaison de l’algorithme<a class="headerlink" href="#terminaison-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
+<p>Lorsqu’un programme contient une boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> il est suceptible de <strong>diverger</strong> (<em>on dit aussi qu’il peut entrer dans une boucle infinie</em>). Pour montrer l’arrêt de la boucle, on utilise une technique de raisonnement appelé <strong>technique du variant de boucle</strong>. Il s’agit de trouver parmi les éléments du programme une quantité:</p>
+<ul class="simple">
+<li><p>entière;</p></li>
+<li><p>positive;</p></li>
+<li><p>qui décroit strictement à chaque tour de boucle.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>g</p></th>
+<th class="head"><p>d</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>t[m]</p></th>
+<th class="head"><p>d-g</p></th>
+<th class="head"><p>trouvé ?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Initialisation</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fin itération 1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Fin itération 2</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fin itération 3</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Soit <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">[1,7,8,9,12,15,15,22,30,31]</span></code>. On recherche <span class="math notranslate nohighlight">\(x=15\)</span> dans <code class="docutils literal notranslate"><span class="pre">t</span></code>.<br />
+Compléter le tableau ci-dessus. Conclure</p>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="recherche_seq.html" title="previous page">Recherche dans un tableau</a>
+    <a class='right-next' id="next-link" href="tri_insertion_v2.html" title="next page">Tri par insertion</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Bruno DARID<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

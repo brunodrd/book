@@ -1,0 +1,132 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "La recherche dichotomique\n",
+    "---"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Principe\n",
+    "On souhaite rechercher une valeur $x$ dans un tableau $t$ trié (*par ordre croissant pour se fixer les idées*). L'idée principale est de comparer $x$ avec la valeur située au milieu du tableau:  \n",
+    "* si elle est plus petite, il suffit de restreindre la recherche dans la partie gauche du tableau;\n",
+    "* sinon, on la restreint à la partie droite de $t$.\n",
+    "* ou alors on a trouvé $x$\n",
+    "\n",
+    "En répétant ce procédé on divise la zone de recherche par deux à chaque fois. Il s'agit d'une application du principe *diviser pour régner*."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Implémentation en python"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def est_trie(t):\n",
+    "    \"\"\"\n",
+    "    Vérifie si t est trié et renvoie un booléen comme réponse\n",
+    "    \"\"\"\n",
+    "    return all(t[i] <= t[i + 1] for i in range(len(t) - 1))\n",
+    "        \n",
+    "\n",
+    "def recherche_dichotomique(x, t):\n",
+    "    \"\"\"\n",
+    "    Renvoie la position de x dans le tableau t trié; None si non trouvé\n",
+    "    Précondition: t trié\n",
+    "    \"\"\"\n",
+    "    assert est_trie(t), \"Erreur: tableau non trié\"\n",
+    "    g = 0#gauche\n",
+    "    d = len(t) - 1#droit\n",
+    "    while g <= d:\n",
+    "        m = (g + d) // 2\n",
+    "        if x > t[m]:\n",
+    "            g = m + 1\n",
+    "        elif x < t[m]:\n",
+    "            d = m - 1\n",
+    "        else:\n",
+    "            return m\n",
+    "    return None"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Initialement, `g = 0` et `d = len(t) - 1`. On calcule l'index central $m$ du tableau (*ligne 8*) en effectuant une **division entière**.  \n",
+    "Ensuite on compare $x$ à `t[m]`. Suivant le résultat de la comparaison, on ajuste la borne gauche $g$ ou droite $d$ de la zone de recherche.  \n",
+    "\n",
+    "Si `x == t[m]` (*ligne 13*), on a trouvé $x$ et on renvoie son index.  Il se peut que l'on sorte de la boucle `while` (si `g > d`, c'est dire que la zone de recherche est vide), dans ce cas, on signale l'absence de $x$ en retournant `None` (*ligne 15*)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Terminaison de l'algorithme"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Lorsqu'un programme contient une boucle `while` il est suceptible de **diverger** (*on dit aussi qu'il peut entrer dans une boucle infinie*). Pour montrer l'arrêt de la boucle, on utilise une technique de raisonnement appelé **technique du variant de boucle**. Il s'agit de trouver parmi les éléments du programme une quantité:  \n",
+    "* entière;\n",
+    "* positive;\n",
+    "* qui décroit strictement à chaque tour de boucle."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "|                 \t| g \t| d \t| m \t| t[m] \t| d-g \t| trouvé ? \t|\n",
+    "|-----------------\t|---\t|---\t|---\t|------\t|-----\t|----------\t|\n",
+    "| Initialisation  \t|   \t|   \t|   \t|      \t|     \t|          \t|\n",
+    "| Fin itération 1 \t|   \t|   \t|   \t|      \t|     \t|          \t|\n",
+    "| Fin itération 2 \t|   \t|   \t|   \t|      \t|     \t|          \t|\n",
+    "| Fin itération 3 \t|   \t|   \t|   \t|      \t|     \t|          \t|"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Soit `t = [1,7,8,9,12,15,15,22,30,31]`. On recherche $x=15$ dans `t`.  \n",
+    "Compléter le tableau ci-dessus. Conclure"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
