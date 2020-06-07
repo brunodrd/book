@@ -16,10 +16,12 @@
     "Voir le principe à l'adresse: \n",
     "[Algorithmes de tri](http://lwh.free.fr/pages/algo/tri/tri_insertion.html)\n",
     "\n",
-    "L'idée principal est de **parcourir le tableau de la gauche vers la droite, en maintenant la partie déjà triée sur sa gauche**. Concrètement, on va décaler d'une case vers la droite tous les éléments déjà triés, qui sont plus grands que l'élément à classer, puis déposer ce dernier dans la case libérée.  \n",
+    "L'idée principal est de **parcourir le tableau de la gauche vers la droite, en maintenant la partie déjà triée sur sa gauche**. Concrètement, on va décaler d'une case vers la droite tous les éléments déjà triés, qui sont plus grands que l'élément d'index $i$ à classer, puis déposer ce dernier dans la case libérée.  \n",
     "\n",
     "```{image} ../img/tri_insertion_principe.png\n",
-    "alt: principe\n",
+    ":alt: principe\n",
+    ":width: 527 px\n",
+    ":height: 320 px\n",
     "```"
    ]
   },

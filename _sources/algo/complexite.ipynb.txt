@@ -12,9 +12,9 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Introduction: complexité ou coût d'un algorithme\n",
+    "# Introduction: complexité temporelle ou coût d'un algorithme\n",
     "Pour traiter un même problème, il existe souvent plusieurs algorithmes. Un critère de choix possible est le *temps d'exécution* le plus faible.  \n",
-    "**Le temps d'exécution caractérise le coût -appelé complexité- d'un algorithme**.  \n",
+    "**Le temps d'exécution ou complexité temporelle caractérise le coût d'un algorithme**.  \n",
     "En réalité on ne va pas mesurer réellement le temps d'exécution mais plutôt utiliser un *modèle* simplifié, indépendant de la machine utilisée et dont l'unité de mesure du coût est une *opération* (affectation, comparaison, etc..)"
    ]
   },
