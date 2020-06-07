@@ -12,13 +12,10 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Introduction: complexité ou coût d'un algorithme\n",
+    "# Introduction: complexité temporelle ou coût d'un algorithme\n",
     "Pour traiter un même problème, il existe souvent plusieurs algorithmes. Un critère de choix possible est le *temps d'exécution* le plus faible.  \n",
-    "**Le temps d'exécution caractérise le coût -appelé complexité- d'un algorithme**.  \n",
-    "\n",
-    "```{note}\n",
-    "En réalité on ne va pas mesurer réellement le temps d'exécution mais plutôt utiliser un *modèle* simplifié, indépendant de la machine utilisée et dont l'unité de mesure du coût est une *opération* (affectation, comparaison, etc..)\n",
-    "```"
+    "**Le temps d'exécution ou complexité temporelle caractérise le coût d'un algorithme**.  \n",
+    "En réalité on ne va pas mesurer réellement le temps d'exécution mais plutôt utiliser un *modèle* simplifié, indépendant de la machine utilisée et dont l'unité de mesure du coût est une *opération* (affectation, comparaison, etc..)"
    ]
   },
   {
@@ -48,6 +45,9 @@
    "metadata": {},
    "source": [
     "# Autres cas courants\n",
+    "Si la complexité ne **dépend pas** de la taille de l'entrée, l'algorithme a une **complexité constante**.\n",
+    "\n",
+    "\n",
     "Existe-t-il des algorithmes plus performants que ceux ayant une complexité linéaire ?  \n",
     "**Oui**, les algorithmes ayant une **complexité logarithmique**. La fonction logarithme est une fonction qui croît très lentement.  \n",
     "\n",
@@ -61,11 +61,7 @@
     "| logarithmique \t|                10 ns                \t|\n",
     "| linéaire      \t|                 1 ms                \t|\n",
     "| quadratique   \t|                1/4 h                \t|\n",
-    "| cubique       \t|                30 ans               \t|\n",
-    "\n",
-    "```{note}\n",
-    "Si la complexité ne **dépend pas** de la taille de l'entrée, l'algorithme a une **complexité constante**.\n",
-    "```"
+    "| cubique       \t|                30 ans               \t|"
    ]
   },
   {
@@ -98,11 +94,11 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": null,
+   "cell_type": "markdown",
    "metadata": {},
-   "outputs": [],
-   "source": []
+   "source": [
+    "---"
+   ]
   }
  ],
  "metadata": {
