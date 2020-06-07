@@ -204,7 +204,7 @@
 </div>
 <div class="section" id="validite-de-l-algorithme">
 <h1>Validité de l’algorithme<a class="headerlink" href="#validite-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
-<p>Au début de chaque itération d’index <code class="docutils literal notranslate"><span class="pre">i</span></code>, le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..i-1]</span></code> est trié (attention, on fait référence aux éléments d’index 0 à <code class="docutils literal notranslate"><span class="pre">i-1</span></code> <strong>inclus</strong>, ce n’est pas une notation python). Cette propriété est appelée <strong>invariant de boucle</strong>. L’invariant est une propriété qui doit:</p>
+<p>Au début de chaque itération d’index <code class="docutils literal notranslate"><span class="pre">i</span></code>, le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..i-1]</span></code> est trié (attention, on fait référence aux éléments d’index 0 à <code class="docutils literal notranslate"><span class="pre">i-1</span></code> <strong>inclus, ce n’est pas une notation python</strong> !). Cette propriété est appelée <strong>invariant de boucle</strong>. L’invariant est une propriété qui doit:</p>
 <div class="section" id="etre-verifie-avant-la-premiere-iteration-initialisation">
 <h2>être vérifié avant la première itération (initialisation)<a class="headerlink" href="#etre-verifie-avant-la-premiere-iteration-initialisation" title="Permalink to this headline">¶</a></h2>
 <p>Lorsqu’on est en ligne 5 la première fois, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">1</span></code> et cette propriété se traduit par: la tableau <code class="docutils literal notranslate"><span class="pre">t[0]</span></code> est trié. Ce qui est vrai évidemment car on n’a qu’un seul élément.</p>
@@ -212,20 +212,27 @@
 <div class="section" id="etre-conserve-conservation">
 <h2>être conservé (conservation)<a class="headerlink" href="#etre-conserve-conservation" title="Permalink to this headline">¶</a></h2>
 <p><strong>Si l’invariant est vrai avant une itération, il l’est aussi avant la prochaine</strong>.</p>
-<p>Ici pour une itération d’index <code class="docutils literal notranslate"><span class="pre">i</span></code> donné, on va décaler les <code class="docutils literal notranslate"><span class="pre">t[i-1]</span></code>, <code class="docutils literal notranslate"><span class="pre">t[i-2]</span></code>, .. etc, vers la droite pour trouver la place de <code class="docutils literal notranslate"><span class="pre">t[i]</span></code>. On place alors <code class="docutils literal notranslate"><span class="pre">t[i]</span></code>. Ces éléments sont triés et comme on incrémente <code class="docutils literal notranslate"><span class="pre">i</span></code> au début de la boucle <code class="docutils literal notranslate"><span class="pre">for</span></code> de la prochaine itération, l’invariant est conservé.</p>
+<p>Ici pour une itération d’index <code class="docutils literal notranslate"><span class="pre">i</span></code> donné, on va décaler les <code class="docutils literal notranslate"><span class="pre">t[i-1]</span></code>, <code class="docutils literal notranslate"><span class="pre">t[i-2]</span></code>, .. etc, vers la droite pour trouver la place de <code class="docutils literal notranslate"><span class="pre">t[i]</span></code>. On place alors <code class="docutils literal notranslate"><span class="pre">t[i]</span></code> et le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..i]</span></code> est trié.</p>
+<p>Juste avant d’entamer une nouvelle itération (au début de la boucle <code class="docutils literal notranslate"><span class="pre">for</span></code>) on incrémente <code class="docutils literal notranslate"><span class="pre">i</span></code>. Ainsi au début de cette nouvelle itération d’index <code class="docutils literal notranslate"><span class="pre">i+1</span></code> le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..i]</span></code> est trié et <strong>l’invariant est conservé</strong>.</p>
 <p>Par ailleurs, la combinaison de l’invariant avec la <strong>terminaison</strong> de la boucle permet de conclure à la validité, on dit aussi <strong>correction totale</strong>, de l’algorithme.</p>
-<p>Dans notre cas, à la fin de la boucle, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">len(t)</span></code>. Si on substitue cette valeur dans l’expression de l’invariant, on a :<br />
-à l’itération <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">len(t)</span></code>, le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..len(t)-1]</span></code> est trié, soit:</p>
+<p>Dans notre cas, lorsque la boucle termine, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">len(t)</span></code>. Si on substitue cette valeur dans l’expression de l’invariant, on a en sortie de boucle: <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">len(t)</span></code> et le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..len(t)-1]</span></code> est trié, soit:</p>
 <p><strong>le tableau t est trié, l’algorithme est correct</strong>.</p>
 </div>
 </div>
-<div class="section" id="efficacite-complexite-de-l-algorithme">
-<h1>Efficacité: complexité de l’algorithme<a class="headerlink" href="#efficacite-complexite-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
-<p>Dans le pire des cas, pour un tableau de taille <code class="docutils literal notranslate"><span class="pre">n</span></code>, il faudra effectuer:</p>
+<div class="section" id="efficacite-complexite-temporelle-de-l-algorithme">
+<h1>Efficacité: complexité temporelle de l’algorithme<a class="headerlink" href="#efficacite-complexite-temporelle-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
+<p>Le temps d’exécution de la procédure <code class="docutils literal notranslate"><span class="pre">tri_insertion</span></code> dépendra des instructions et du nombre fois que ces instructions seront exécutées. C’est la nature du tableau <code class="docutils literal notranslate"><span class="pre">t</span></code> qui fixera ce nombre. De plus, on considèrera pour simplifier que le coût d’une instruction est constant.</p>
+<p>Soit <span class="math notranslate nohighlight">\(n\)</span> la taille de l’entrée.</p>
+<p>Dans le meilleur des cas, on ne passe pas dans la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> (c’est possible si <code class="docutils literal notranslate"><span class="pre">t</span></code> est … déjà trié par ordre croissant!) et on peut montrer que le temps d’exécution a une expression de la forme <span class="math notranslate nohighlight">\(a\times n +b\)</span> avec <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span> des constantes (en fait, il y a <span class="math notranslate nohighlight">\(n-1\)</span> passages dans la boucle <code class="docutils literal notranslate"><span class="pre">for</span></code>). La complexité est alors <strong>linéaire</strong>.</p>
+<p>Le pire des cas se produit si <code class="docutils literal notranslate"><span class="pre">t</span></code> est entièrement trié par ordre décroissant. Le nombre de fois que la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> est exécutée est alors:</p>
 <div class="math notranslate nohighlight">
-\[ 1+2+\cdots + (n-2) + (n-1)=\dfrac{n}{2}\times(n-1)\]</div>
-<p>comparaisons et échanges.
-Le coût (on dit aussi <em>complexité</em>) est <strong>quadratique</strong>. On écrit souvent que la complexité est en <span class="math notranslate nohighlight">\(\Theta(n²)\)</span>.</p>
+\[ N_1=\dfrac{n}{2}\times(n-1)\]</div>
+<p>Chaque instruction de la boucle étant exécutée:</p>
+<div class="math notranslate nohighlight">
+\[ N_2=\dfrac{1}{2}\times(n-1)\times (n-2)\]</div>
+<p>fois. Les instructions en dehors de la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> étant exécutées <span class="math notranslate nohighlight">\(n-1\)</span> fois.
+Il est alors clair que le temps d’exécution total sera une fonction du type <span class="math notranslate nohighlight">\(a'\times n^2 + b'\times n +c'\)</span>.</p>
+<p>On dit alors que la <em>complexité</em> dans le pire des cas du tri par insertion est <strong>quadratique</strong> (<em>on rencontre quelques fois l’expression “la complexité est en</em> <span class="math notranslate nohighlight">\(O(n²)\)</span>”).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Voir le document “Complexité” en complément</p>
