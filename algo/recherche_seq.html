@@ -179,7 +179,7 @@
 <p>Pour <em>Thomas Cormen</em>, très grand professeur d’informatique, un algorithme est <strong>une procédure de calcul, bien définie, qui prend en entrée une valeur ou un ensemble de valeurs, et qui donne en sortie une valeur ou un ensemble de valeurs</strong>. C’est un outil permettant de résoudre un problème de calcul bien spécifié.<br />
 Un algorithme doit se terminer dans un temps raisonnable et doit résoudre correctement le problème donné. Ces deux propriétés sont respectivement nommées:</p>
 <ul class="simple">
-<li><p>complexité</p></li>
+<li><p>complexité en temps (ou <em>temporelle</em>)</p></li>
 <li><p>correction</p></li>
 </ul>
 <p>Cette première leçon d’algorithmique sera orientée vers la recherche (<em>séquentielle</em>) d’un élément dans un tableau.</p>
@@ -189,7 +189,8 @@ Un algorithme doit se terminer dans un temps raisonnable et doit résoudre corre
 <div class="section" id="recherche-d-une-occurence">
 <h2>Recherche d’une occurence<a class="headerlink" href="#recherche-d-une-occurence" title="Permalink to this headline">¶</a></h2>
 <p>Soit le problème suivant: étant donné un tableau <code class="docutils literal notranslate"><span class="pre">t</span></code> de <span class="math notranslate nohighlight">\(n\)</span> éléments, écrire un algorithme qui permet de dire si un élément <span class="math notranslate nohighlight">\(x\)</span> appartient à ce tableau.<br />
-Le problème: <span class="math notranslate nohighlight">\(x\)</span> appartient-il au tableau ?</p>
+Le problème: <span class="math notranslate nohighlight">\(x\)</span> appartient-il au tableau ?<br />
+<em>Remarque: on peut présenter les algorithmes en “pseudo-code” afin de ne pas être dépendant des rigueurs syntaxiques d’un langage de programmation</em></p>
 <p>Les entrées: un tableau <code class="docutils literal notranslate"><span class="pre">t</span></code> et un élément <code class="docutils literal notranslate"><span class="pre">x</span></code>;<br />
 La sortie: une réponse vraie ou fausse (<code class="docutils literal notranslate"><span class="pre">True</span></code> ou <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p>
 <p><em>Une</em> solution:</p>
@@ -408,7 +409,8 @@ Le problème: quellle est la valeur moyenne des éléments du tableau ?</p>
 <li><p><span class="math notranslate nohighlight">\(n-1\)</span> fois dans le problème 2;</p></li>
 <li><p><span class="math notranslate nohighlight">\(n\)</span> fois dans le problème 3;</p></li>
 </ul>
-<p>Le nombre d’opérations effectuées dépend de la taille de l’entrée <span class="math notranslate nohighlight">\(n\)</span>, plus exactement est proportionnel à <span class="math notranslate nohighlight">\(n\)</span> (ou <span class="math notranslate nohighlight">\(n-1\)</span>). On dit que la complexité de ces algorithmes est <strong>linéaire</strong>.</p>
+<p>Le nombre d’opérations effectuées dépend de la taille de l’entrée <span class="math notranslate nohighlight">\(n\)</span>, plus exactement est proportionnel à <span class="math notranslate nohighlight">\(n\)</span> (ou <span class="math notranslate nohighlight">\(n-1\)</span>). On dit que la complexité en temps de ces algorithmes est <strong>linéaire</strong>.<br />
+<em>Cette notion de complexité temporelle sera précisée davantage dans les documents suivants</em>).</p>
 </div>
 </div>
 
