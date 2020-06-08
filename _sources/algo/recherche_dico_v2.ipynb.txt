@@ -12,20 +12,42 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Principe\n",
+    "# Principe et pseudo-code\n",
     "On souhaite rechercher une valeur $x$ dans un tableau $t$ trié (*par ordre croissant pour se fixer les idées*). L'idée principale est de comparer $x$ avec la valeur située au milieu du tableau:  \n",
     "* si elle est plus petite, il suffit de restreindre la recherche dans la partie gauche du tableau;\n",
     "* sinon, on la restreint à la partie droite de $t$.\n",
     "* ou alors on a trouvé $x$\n",
     "\n",
-    "En répétant ce procédé on divise la zone de recherche par deux à chaque fois. Il s'agit d'une application du principe *diviser pour régner*."
+    "En répétant ce procédé on divise la zone de recherche par deux à chaque fois. Il s'agit d'une application du principe *diviser pour régner*.\n",
+    "\n",
+    "```\n",
+    "fonction recherche_dichotomique(x, t)\n",
+    "Entrées: \n",
+    "tableau t de taille n; \n",
+    "x élément à rechercher, de même type que les éléments de t\n",
+    "Retourne l'index de x ou rien si non trouvé\n",
+    "\n",
+    "Variables: g, d et m des index repérant les \"bords\" du tableau et le milieu respectivement\n",
+    "\n",
+    "\n",
+    "Fixer g à 0 et d à n-1\n",
+    "Tant que g <= d\n",
+    "    calculer l'index m du milieu du tableau [g..d]\n",
+    "    Si x > t[m]\n",
+    "        g = m + 1\n",
+    "    Sinon si x < t[m]\n",
+    "        d = m - 1\n",
+    "    Sinon retourner m\n",
+    "Retourner non trouvé\n",
+    "```"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Implémentation en python"
+    "# Implémentation en python\n",
+    "**Travail**: compléter l'implémentation en python de cet algorithme."
    ]
   },
   {
@@ -51,12 +73,7 @@
     "    d = len(t) - 1#droit\n",
     "    while g <= d:\n",
     "        m = (g + d) // 2\n",
-    "        if x > t[m]:\n",
-    "            g = m + 1\n",
-    "        elif x < t[m]:\n",
-    "            d = m - 1\n",
-    "        else:\n",
-    "            return m\n",
+    "        #Code à compléter\n",
     "    return None"
    ]
   },

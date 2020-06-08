@@ -21,7 +21,7 @@
    "source": [
     "Pour *Thomas Cormen*, très grand professeur d'informatique, un algorithme est **une procédure de calcul, bien définie, qui prend en entrée une valeur ou un ensemble de valeurs, et qui donne en sortie une valeur ou un ensemble de valeurs**. C'est un outil permettant de résoudre un problème de calcul bien spécifié.  \n",
     "Un algorithme doit se terminer dans un temps raisonnable et doit résoudre correctement le problème donné. Ces deux propriétés sont respectivement nommées:\n",
-    "* complexité\n",
+    "* complexité en temps (ou *temporelle*)\n",
     "* correction  \n",
     "\n",
     "Cette première leçon d'algorithmique sera orientée vers la recherche (*séquentielle*) d'un élément dans un tableau."
@@ -47,6 +47,7 @@
    "source": [
     "Soit le problème suivant: étant donné un tableau `t` de $n$ éléments, écrire un algorithme qui permet de dire si un élément $x$ appartient à ce tableau.   \n",
     "Le problème: $x$ appartient-il au tableau ?  \n",
+    "*Remarque: on peut présenter les algorithmes en \"pseudo-code\" afin de ne pas être dépendant des rigueurs syntaxiques d'un langage de programmation*\n",
     "\n",
     "Les entrées: un tableau `t` et un élément `x`;  \n",
     "La sortie: une réponse vraie ou fausse (`True` ou `False`)  \n",
@@ -366,7 +367,8 @@
     "* $n-1$ fois dans le problème 2;\n",
     "* $n$ fois dans le problème 3;  \n",
     "\n",
-    "Le nombre d'opérations effectuées dépend de la taille de l'entrée $n$, plus exactement est proportionnel à $n$ (ou $n-1$). On dit que la complexité de ces algorithmes est **linéaire**."
+    "Le nombre d'opérations effectuées dépend de la taille de l'entrée $n$, plus exactement est proportionnel à $n$ (ou $n-1$). On dit que la complexité en temps de ces algorithmes est **linéaire**.  \n",
+    "*Cette notion de complexité temporelle sera précisée davantage dans les documents suivants*)."
    ]
   },
   {
