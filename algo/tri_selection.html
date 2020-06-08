@@ -238,17 +238,29 @@
 Il s’agit d’un <strong>invariant</strong> pour l’algorithme <code class="docutils literal notranslate"><span class="pre">tri_selection</span></code>.<br />
 La terminaison est assurée car l’algorithme fait intervenir deux boucles bornées (boucle <code class="docutils literal notranslate"><span class="pre">for</span></code>).</p>
 </div>
-<div class="section" id="complexite">
-<h1>Complexité<a class="headerlink" href="#complexite" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="complexite-en-temps">
+<h1>Complexité en temps<a class="headerlink" href="#complexite-en-temps" title="Permalink to this headline">¶</a></h1>
+<p>Notons <span class="math notranslate nohighlight">\(n\)</span> la taille du tableau d’entrée. Détaillons les opérations exécutées par cette fonction:</p>
+<ul class="simple">
+<li><p>1 affectation (<em>en temps constant</em>);</p></li>
+<li><p><span class="math notranslate nohighlight">\(n-1\)</span> affectations (à l’intérieur de la boucle externe);</p></li>
+<li><p><span class="math notranslate nohighlight">\(n-1\)</span> appel de fonctions (<em>on considère qu’un appel prend un temps constant</em>);</p></li>
+<li><p>au plus 2 opérations exécutées <span class="math notranslate nohighlight">\(N\)</span> fois dans la boucle interne (<em><span class="math notranslate nohighlight">\(N\)</span> sera évalué ci-dessous</em>).</p></li>
+</ul>
 <p>Le contenu de la boucle interne prend un temps d’exécution constant. Evaluons le nombre de fois qu’elle est exécutée.</p>
-<p>Pour <span class="math notranslate nohighlight">\(i=0\)</span>, elle est exécutée <span class="math notranslate nohighlight">\((n-1)-(0+1)+1=n-1\)</span> fois. Pour <span class="math notranslate nohighlight">\(i=1\)</span>, elle est exécutée <span class="math notranslate nohighlight">\((n-1)-(1+1)+1=n-2\)</span> fois. Si on généralise, le nombre d’exécutions de la boucle interne est:</p>
+<ul class="simple">
+<li><p>Pour <span class="math notranslate nohighlight">\(i=0\)</span>, elle est exécutée <span class="math notranslate nohighlight">\((n-1)-(0+1)+1=n-1\)</span> fois.</p></li>
+<li><p>Pour <span class="math notranslate nohighlight">\(i=1\)</span>, elle est exécutée <span class="math notranslate nohighlight">\((n-1)-(1+1)+1=n-2\)</span> fois.</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>Si on généralise, le nombre d’exécutions de la boucle interne est:</p>
 <div class="math notranslate nohighlight">
-\[(n-1)+(n-2)+\cdots +2+1\]</div>
+\[N = (n-1)+(n-2)+\cdots +2+1\]</div>
 <p>Cette somme correspond à la somme des termes consécutifs d’une suite arithmétique, dont la valeur pour <span class="math notranslate nohighlight">\(n&gt;1\)</span> est donnée par:</p>
 <div class="math notranslate nohighlight">
-\[\dfrac{n}{2}\times (n-1)=\dfrac{1}{2}n^2-\dfrac{1}{2}n\]</div>
-<p>Pour une taille <span class="math notranslate nohighlight">\(n\)</span> très grande de l’entrée, le terme en <span class="math notranslate nohighlight">\(n^2\)</span> devient prépondérant. En d’autres termes, le nombre d’opérations effectuées, donc le temps d’exécution, est proportionnel à <span class="math notranslate nohighlight">\(n^2\)</span>.<br />
-<strong>La complexité du tri par sélection est quadratique</strong>.</p>
+\[N=\dfrac{n}{2}\times (n-1)=\dfrac{1}{2}n^2-\dfrac{1}{2}n\]</div>
+<p>Au final, le nombre d’opérations effectuées s’exprimera avec une fonction de <span class="math notranslate nohighlight">\(n\)</span> de la forme <span class="math notranslate nohighlight">\(an^2+bn+c\)</span>, avec <span class="math notranslate nohighlight">\(a, b, c\)</span> des constantes.</p>
+<p><strong>La complexité en temps du tri par sélection est quadratique</strong>.</p>
 <div class="section" id="application-directe">
 <h2>Application directe<a class="headerlink" href="#application-directe" title="Permalink to this headline">¶</a></h2>
 <p>En supposant que le tri par sélection prenne un temps directement proportionnel à <span class="math notranslate nohighlight">\(n^2\)</span> et qu’un tri de 16000 valeurs nécessite 6.8 s. Calculer le temps nécessaire pour le tri d’un million de valeurs avec cet algorithme.</p>
