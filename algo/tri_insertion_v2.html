@@ -97,6 +97,9 @@
   <li class="">
     <a href="algo_2_algorithme_knn.html">L’algorithme des k plus proches voisins</a>
   </li>
+  <li class="">
+    <a href="algo_2_glouton.html">Les algorithmes gloutons</a>
+  </li>
 </ul>
 </nav>
 
@@ -162,9 +165,38 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#principe" class="nav-link">Principe</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#implementation-en-python" class="nav-link">Implémentation en python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#validite-de-l-algorithme" class="nav-link">Validité de l’algorithme</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#etre-verifie-avant-la-premiere-iteration-initialisation" class="nav-link">être vérifié avant la première itération (initialisation)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#etre-conserve-conservation" class="nav-link">être conservé (conservation)</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#efficacite-complexite-temporelle-de-l-algorithme" class="nav-link">Efficacité: complexité temporelle de l’algorithme</a>
+        </li>
     
     </ul>
 </nav>
@@ -179,16 +211,15 @@
                 
   <div class="section" id="tri-par-insertion">
 <h1>Tri par insertion<a class="headerlink" href="#tri-par-insertion" title="Permalink to this headline">¶</a></h1>
-</div>
 <div class="section" id="principe">
-<h1>Principe<a class="headerlink" href="#principe" title="Permalink to this headline">¶</a></h1>
+<h2>Principe<a class="headerlink" href="#principe" title="Permalink to this headline">¶</a></h2>
 <p>Voir le principe à l’adresse:
 <a class="reference external" href="http://lwh.free.fr/pages/algo/tri/tri_insertion.html">Algorithmes de tri</a></p>
 <p>L’idée principal est de <strong>parcourir le tableau de la gauche vers la droite, en maintenant la partie déjà triée sur sa gauche</strong>. Concrètement, on va décaler d’une case vers la droite tous les éléments déjà triés, qui sont plus grands que l’élément d’index <span class="math notranslate nohighlight">\(i\)</span> à classer, puis déposer ce dernier dans la case libérée.</p>
 <a class="reference internal image-reference" href="../_images/tri_insertion_principe.png"><img alt="principe" src="../_images/tri_insertion_principe.png" style="width: 527px; height: 320px;" /></a>
 </div>
 <div class="section" id="implementation-en-python">
-<h1>Implémentation en python<a class="headerlink" href="#implementation-en-python" title="Permalink to this headline">¶</a></h1>
+<h2>Implémentation en python<a class="headerlink" href="#implementation-en-python" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tri_insertion</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
@@ -210,14 +241,14 @@
 </div>
 </div>
 <div class="section" id="validite-de-l-algorithme">
-<h1>Validité de l’algorithme<a class="headerlink" href="#validite-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
+<h2>Validité de l’algorithme<a class="headerlink" href="#validite-de-l-algorithme" title="Permalink to this headline">¶</a></h2>
 <p>Au début de chaque itération d’index <code class="docutils literal notranslate"><span class="pre">i</span></code>, le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..i-1]</span></code> est trié (attention, on fait référence aux éléments d’index 0 à <code class="docutils literal notranslate"><span class="pre">i-1</span></code> <strong>inclus, ce n’est pas une notation python</strong> !). Cette propriété est appelée <strong>invariant de boucle</strong>. L’invariant est une propriété qui doit:</p>
 <div class="section" id="etre-verifie-avant-la-premiere-iteration-initialisation">
-<h2>être vérifié avant la première itération (initialisation)<a class="headerlink" href="#etre-verifie-avant-la-premiere-iteration-initialisation" title="Permalink to this headline">¶</a></h2>
+<h3>être vérifié avant la première itération (initialisation)<a class="headerlink" href="#etre-verifie-avant-la-premiere-iteration-initialisation" title="Permalink to this headline">¶</a></h3>
 <p>Lorsqu’on est en ligne 5 la première fois, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">1</span></code> et cette propriété se traduit par: la tableau <code class="docutils literal notranslate"><span class="pre">t[0]</span></code> est trié. Ce qui est vrai évidemment car on n’a qu’un seul élément.</p>
 </div>
 <div class="section" id="etre-conserve-conservation">
-<h2>être conservé (conservation)<a class="headerlink" href="#etre-conserve-conservation" title="Permalink to this headline">¶</a></h2>
+<h3>être conservé (conservation)<a class="headerlink" href="#etre-conserve-conservation" title="Permalink to this headline">¶</a></h3>
 <p><strong>Si l’invariant est vrai avant une itération, il l’est aussi avant la prochaine</strong>.</p>
 <p>Ici pour une itération d’index <code class="docutils literal notranslate"><span class="pre">i</span></code> donné, on va décaler les <code class="docutils literal notranslate"><span class="pre">t[i-1]</span></code>, <code class="docutils literal notranslate"><span class="pre">t[i-2]</span></code>, .. etc, vers la droite pour trouver la place de <code class="docutils literal notranslate"><span class="pre">t[i]</span></code>. On place alors <code class="docutils literal notranslate"><span class="pre">t[i]</span></code> et le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..i]</span></code> est trié.</p>
 <p>Juste avant d’entamer une nouvelle itération (au début de la boucle <code class="docutils literal notranslate"><span class="pre">for</span></code>) on incrémente <code class="docutils literal notranslate"><span class="pre">i</span></code>. Ainsi au début de cette nouvelle itération d’index <code class="docutils literal notranslate"><span class="pre">i+1</span></code> le sous tableau <code class="docutils literal notranslate"><span class="pre">t[0..i]</span></code> est trié et <strong>l’invariant est conservé</strong>.</p>
@@ -227,7 +258,7 @@
 </div>
 </div>
 <div class="section" id="efficacite-complexite-temporelle-de-l-algorithme">
-<h1>Efficacité: complexité temporelle de l’algorithme<a class="headerlink" href="#efficacite-complexite-temporelle-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
+<h2>Efficacité: complexité temporelle de l’algorithme<a class="headerlink" href="#efficacite-complexite-temporelle-de-l-algorithme" title="Permalink to this headline">¶</a></h2>
 <p>Le temps d’exécution de la procédure <code class="docutils literal notranslate"><span class="pre">tri_insertion</span></code> dépendra des instructions et du nombre fois que ces instructions seront exécutées. C’est la nature du tableau <code class="docutils literal notranslate"><span class="pre">t</span></code> qui fixera ce nombre. De plus, on considèrera pour simplifier que le coût d’une instruction est constant.</p>
 <p>Soit <span class="math notranslate nohighlight">\(n\)</span> la taille de l’entrée.</p>
 <p>Dans le meilleur des cas, on ne passe pas dans la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> (c’est possible si <code class="docutils literal notranslate"><span class="pre">t</span></code> est … déjà trié par ordre croissant!) et on peut montrer que le temps d’exécution a une expression de la forme <span class="math notranslate nohighlight">\(a\times n +b\)</span> avec <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span> des constantes (en fait, il y a <span class="math notranslate nohighlight">\(n-1\)</span> passages dans la boucle <code class="docutils literal notranslate"><span class="pre">for</span></code>). La complexité est alors <strong>linéaire</strong>.</p>
@@ -245,6 +276,7 @@ Il est alors clair que le temps d’exécution total sera une fonction du type <
 <p>Voir le document “Complexité” en complément</p>
 </div>
 <hr class="docutils" />
+</div>
 </div>
 
 

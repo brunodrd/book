@@ -97,6 +97,9 @@
   <li class="">
     <a href="algo_2_algorithme_knn.html">L’algorithme des k plus proches voisins</a>
   </li>
+  <li class="">
+    <a href="algo_2_glouton.html">Les algorithmes gloutons</a>
+  </li>
 </ul>
 </nav>
 
@@ -162,9 +165,24 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#principe-et-pseudo-code" class="nav-link">Principe et pseudo-code</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#implementation-en-python" class="nav-link">Implémentation en python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#terminaison-de-l-algorithme" class="nav-link">Terminaison de l’algorithme</a>
+        </li>
     
     </ul>
 </nav>
@@ -179,9 +197,8 @@
                 
   <div class="section" id="la-recherche-dichotomique">
 <h1>La recherche dichotomique<a class="headerlink" href="#la-recherche-dichotomique" title="Permalink to this headline">¶</a></h1>
-</div>
 <div class="section" id="principe-et-pseudo-code">
-<h1>Principe et pseudo-code<a class="headerlink" href="#principe-et-pseudo-code" title="Permalink to this headline">¶</a></h1>
+<h2>Principe et pseudo-code<a class="headerlink" href="#principe-et-pseudo-code" title="Permalink to this headline">¶</a></h2>
 <p>On souhaite rechercher une valeur <span class="math notranslate nohighlight">\(x\)</span> dans un tableau <span class="math notranslate nohighlight">\(t\)</span> trié (<em>par ordre croissant pour se fixer les idées</em>). L’idée principale est de comparer <span class="math notranslate nohighlight">\(x\)</span> avec la valeur située au milieu du tableau:</p>
 <ul class="simple">
 <li><p>si elle est plus petite, il suffit de restreindre la recherche dans la partie gauche du tableau;</p></li>
@@ -211,7 +228,7 @@
 </div>
 </div>
 <div class="section" id="implementation-en-python">
-<h1>Implémentation en python<a class="headerlink" href="#implementation-en-python" title="Permalink to this headline">¶</a></h1>
+<h2>Implémentation en python<a class="headerlink" href="#implementation-en-python" title="Permalink to this headline">¶</a></h2>
 <p><strong>Travail</strong>: compléter l’implémentation en python de cet algorithme.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -243,7 +260,7 @@ Ensuite on compare <span class="math notranslate nohighlight">\(x\)</span> à <c
 <p>Si <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">t[m]</span></code> (<em>ligne 13</em>), on a trouvé <span class="math notranslate nohighlight">\(x\)</span> et on renvoie son index.  Il se peut que l’on sorte de la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> (si <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">&gt;</span> <span class="pre">d</span></code>, c’est dire que la zone de recherche est vide), dans ce cas, on signale l’absence de <span class="math notranslate nohighlight">\(x\)</span> en retournant <code class="docutils literal notranslate"><span class="pre">None</span></code> (<em>ligne 15</em>).</p>
 </div>
 <div class="section" id="terminaison-de-l-algorithme">
-<h1>Terminaison de l’algorithme<a class="headerlink" href="#terminaison-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
+<h2>Terminaison de l’algorithme<a class="headerlink" href="#terminaison-de-l-algorithme" title="Permalink to this headline">¶</a></h2>
 <p>Lorsqu’un programme contient une boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> il est suceptible de <strong>diverger</strong> (<em>on dit aussi qu’il peut entrer dans une boucle infinie</em>). Pour montrer l’arrêt de la boucle, on utilise une technique de raisonnement appelé <strong>technique du variant de boucle</strong>. Il s’agit de trouver parmi les éléments du programme une quantité:</p>
 <ul class="simple">
 <li><p>entière;</p></li>
@@ -298,6 +315,7 @@ Ensuite on compare <span class="math notranslate nohighlight">\(x\)</span> à <c
 </table>
 <p>Soit <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">[1,7,8,9,12,15,15,22,30,31]</span></code>. On recherche <span class="math notranslate nohighlight">\(x=15\)</span> dans <code class="docutils literal notranslate"><span class="pre">t</span></code>.<br />
 Compléter le tableau ci-dessus. Conclure</p>
+</div>
 </div>
 
 

@@ -12,7 +12,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Principe\n",
+    "## Principe\n",
     "Voir le principe à l'adresse: \n",
     "[Algorithmes de tri](http://lwh.free.fr/pages/algo/tri/tri_insertion.html)\n",
     "\n",
@@ -29,7 +29,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Implémentation en python"
+    "## Implémentation en python"
    ]
   },
   {
@@ -57,7 +57,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Validité de l'algorithme\n",
+    "## Validité de l'algorithme\n",
     "Au début de chaque itération d'index `i`, le sous tableau `t[0..i-1]` est trié (attention, on fait référence aux éléments d'index 0 à `i-1` **inclus, ce n'est pas une notation python** !). Cette propriété est appelée **invariant de boucle**. L'invariant est une propriété qui doit:  "
    ]
   },
@@ -65,7 +65,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## être vérifié avant la première itération (initialisation)\n",
+    "### être vérifié avant la première itération (initialisation)\n",
     "Lorsqu'on est en ligne 5 la première fois, `i = 1` et cette propriété se traduit par: la tableau `t[0]` est trié. Ce qui est vrai évidemment car on n'a qu'un seul élément."
    ]
   },
@@ -73,7 +73,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## être conservé (conservation)\n",
+    "### être conservé (conservation)\n",
     "**Si l'invariant est vrai avant une itération, il l'est aussi avant la prochaine**. \n",
     "\n",
     "Ici pour une itération d'index `i` donné, on va décaler les `t[i-1]`, `t[i-2]`, .. etc, vers la droite pour trouver la place de `t[i]`. On place alors `t[i]` et le sous tableau `t[0..i]` est trié. \n",
@@ -96,7 +96,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Efficacité: complexité temporelle de l'algorithme"
+    "## Efficacité: complexité temporelle de l'algorithme"
    ]
   },
   {

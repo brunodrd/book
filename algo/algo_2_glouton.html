@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Les algorithmes gloutons &#8212; Algorithmique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="L’algorithme des k plus proches voisins" href="algo_2_algorithme_knn.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo_LBO.jpg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Algorithmique</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../intro.html">Cours d’algorithmique NSI 1ere</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Agorithmes de recherche</p>
+</li>
+  <li class="">
+    <a href="recherche_seq.html">Recherche dans un tableau</a>
+  </li>
+  <li class="">
+    <a href="recherche_dico_v2.html">La recherche dichotomique</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Algorithmes de tris</p>
+</li>
+  <li class="">
+    <a href="tri_insertion_v2.html">Tri par insertion</a>
+  </li>
+  <li class="">
+    <a href="tri_selection.html">Tri par sélection</a>
+  </li>
+  <li class="">
+    <a href="complexite.html">Complexité</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Algorithmes avancés</p>
+</li>
+  <li class="">
+    <a href="algo_2_algorithme_knn.html">L’algorithme des k plus proches voisins</a>
+  </li>
+  <li class="active">
+    <a href="">Les algorithmes gloutons</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/algo/algo_2_glouton.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+            <div class="dropdown-buttons">
+                
+                <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/algo/algo_2_glouton.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="../_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                
+                
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#introduction" class="nav-link">Introduction</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#le-probleme-du-rendu-de-monnaie" class="nav-link">Le problème du rendu de monnaie</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#le-probleme-du-sac-a-dos" class="nav-link">Le problème du sac à dos</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#s-approprier-le-probleme" class="nav-link">S’approprier le problème</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#vers-le-codage-d-un-algorithme-en-python" class="nav-link">Vers le codage d’un algorithme en python</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#travail" class="nav-link">Travail</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="les-algorithmes-gloutons">
+<h1>Les algorithmes gloutons<a class="headerlink" href="#les-algorithmes-gloutons" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Dans certains problèmes appelés <em>problèmes d’optimisation</em> on doit maximiser ou minimiser une fonction en tenant compte d’une ou de plusieurs contraintes. Les algorithmes utilisés font intervenir une série d’étapes, chaque étape proposant un ensemble de choix.</p>
+<p>L’approche naïve consistant à énumérer tous les choix possibles (<em>brute force</em>) est rarement utilisable à cause de son coût.</p>
+<p>L’approche gloutonne, qui sans être nécessairement optimale, est assez rapide et simple à mettre en oeuvre. Il s’agit de <strong>faire le choix qui semble le meilleur à chaque étape</strong> (en espérant que celui-ci mène à une solution optimale) et ne plus revenir sur ce choix.</p>
+<p>Deux exemples sont présentés en première: le problème du rendu de monnaie et le problème du sac à dos.</p>
+</div>
+<div class="section" id="le-probleme-du-rendu-de-monnaie">
+<h2>Le problème du rendu de monnaie<a class="headerlink" href="#le-probleme-du-rendu-de-monnaie" title="Permalink to this headline">¶</a></h2>
+<p>Le problème du rendu de monnaie s’énonce de la façon suivante : étant donné un système de monnaie (<em>pièces et billets, qu’on confondra ici pour simplifier, exceptés les centimes</em>), comment rendre une somme donnée de façon optimale, c’est-à-dire avec le nombre minimal de pièces et/ou billets ?</p>
+<p><strong>Un exemple</strong>: le boulanger doit rendre la monnaie de 9€.</p>
+<ol class="simple">
+<li><p>Donner toutes les combinaisons possibles ainsi que le nombre de pièces utilisées.</p></li>
+<li><p>Quelle stratégie adopter pour avoir la solution optimale?</p></li>
+</ol>
+<p>L’algorithme glouton utilisé ici peut s’énoncer comme suit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fonction</span> <span class="n">rendu_monnaie</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span><span class="n">monnaie</span><span class="p">)</span>
+<span class="o">//</span><span class="n">montant</span><span class="p">:</span> <span class="n">entier</span>
+<span class="o">//</span><span class="n">monnaie</span><span class="p">:</span> <span class="n">tableau</span> <span class="n">d</span><span class="s1">&#39;entier correspondant aux valeurs du système monétaire utilisé</span>
+<span class="o">//</span><span class="n">trié</span> <span class="n">par</span> <span class="n">ordre</span> <span class="n">croissant</span>
+
+<span class="n">Affecter</span> <span class="n">à</span> <span class="n">une</span> <span class="n">variable</span> <span class="n">n</span> <span class="n">la</span> <span class="n">taille</span> <span class="n">du</span> <span class="n">tableau</span> <span class="n">monnaie</span>
+<span class="n">Initialiser</span> <span class="n">un</span> <span class="n">tableau</span> <span class="s1">&#39;solution&#39;</span> <span class="n">à</span> <span class="n">zéro</span>   <span class="o">//</span><span class="n">correspond</span> <span class="n">aux</span> <span class="n">pièces</span> <span class="n">utilisées</span>
+<span class="n">Pour</span> <span class="n">i</span> <span class="n">allant</span> <span class="n">de</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="n">à</span> <span class="mi">0</span>
+    <span class="n">Tant</span> <span class="n">que</span> <span class="n">montant</span> <span class="o">&gt;=</span> <span class="n">monnaie</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+        <span class="n">montant</span> <span class="o">&lt;-</span> <span class="n">montant</span> <span class="o">-</span> <span class="n">monnaie</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">solution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">solution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">Retourner</span> <span class="n">le</span> <span class="n">tableau</span> <span class="n">solution</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Coder cet algorithme en python.</p></li>
+<li><p>Quelle est la complexité en temps de cet algorithme ?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rendu_monnaie</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="n">monnaie</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">monnaie</span><span class="p">)</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">while</span> <span class="n">montant</span> <span class="o">&gt;=</span> <span class="n">monnaie</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">montant</span> <span class="o">=</span> <span class="n">montant</span> <span class="o">-</span> <span class="n">monnaie</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">solution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Tests</span>
+<span class="n">euros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">rendu_monnaie</span><span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="n">euros</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>Soit le système monétaire formé des valeurs suivantes:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">monnaie1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Appeler la fonction <code class="docutils literal notranslate"><span class="pre">rendu_monnaie(12,</span> <span class="pre">monnaie1)</span></code>.
+Commenter.</p>
+<ol class="simple">
+<li><p>Soit le système monétaire formé des valeurs suivantes:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">monnaie2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Que se passerait-il si on appelait (<strong>ne pas le faire</strong>) <code class="docutils literal notranslate"><span class="pre">rendu_monnaie(4,</span> <span class="pre">monnaie2)</span></code>. Commenter</p>
+<p>Les euros forment un système <em>canonique</em>, c’est-à-dire un système pour lequel l’algorithme glouton donne une solution optimale.</p>
+</div>
+<div class="section" id="le-probleme-du-sac-a-dos">
+<h2>Le problème du sac à dos<a class="headerlink" href="#le-probleme-du-sac-a-dos" title="Permalink to this headline">¶</a></h2>
+<p>Le problème consiste à remplir un sac à dos ayant une capacité maximale fixée, avec tout ou partie d’un ensemble donné d’objets ayant chacun une masse et une valeur. Les objets mis dans le sac à dos doivent maximiser la valeur totale, sans dépasser la capacité (<em>masse</em>) maximale supportée par le sac.</p>
+<div class="section" id="s-approprier-le-probleme">
+<h3>S’approprier le problème<a class="headerlink" href="#s-approprier-le-probleme" title="Permalink to this headline">¶</a></h3>
+<p>Télécharger le fichier <a class="reference external" href="https://brdarid.nohost.me/nextcloud/s/WHKozDrAoi44pG3">sac-a-dos.zip</a>, le décompresser puis, dans le dossier <code class="docutils literal notranslate"><span class="pre">sac-a-dos</span></code> obtenu, ouvrir <code class="docutils literal notranslate"><span class="pre">applet.html</span></code> avec un navigateur. Tester !</p>
+</div>
+<div class="section" id="vers-le-codage-d-un-algorithme-en-python">
+<h3>Vers le codage d’un algorithme en python<a class="headerlink" href="#vers-le-codage-d-un-algorithme-en-python" title="Permalink to this headline">¶</a></h3>
+<p>Comme cela a été précisé en introduction, appliquer un algorithme glouton revient à faire le <strong>meilleur choix</strong>  à chaque étape. Comment définir ce meilleur choix ? ou, en d’autres termes, quel objet prendre ?
+Trois options:</p>
+<ul class="simple">
+<li><p>valeur maximale;</p></li>
+<li><p>masse minimale;</p></li>
+<li><p>rapport (valeur / masse) maximal</p></li>
+</ul>
+<p>La structure de données envisagée pour modéliser les objets: tableau de p-uplets nommés (<em>en 1ere NSI des dictionnaires</em>) ayant pour clés un index, la valeur et la masse).<br />
+On donne ci-dessous un code commenté si le choix se fait suivant la valeur (<em>ordre décroissant</em>), ainsi qu’un exemple d’appel de la fonction construite.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">valeur</span><span class="p">(</span><span class="n">objet</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">objet</span><span class="p">[</span><span class="s1">&#39;valeur&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">glouton</span><span class="p">(</span><span class="n">tab_objet</span><span class="p">,</span> <span class="n">capacite</span><span class="p">,</span> <span class="n">choix</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">vtotale</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">mtotale</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">objets_pris</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab_objet</span><span class="p">)</span>
+    <span class="c1">#Tri des objets (critère de choix à indiquer avec le paramètre key)</span>
+    <span class="n">tab_objet_trie</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">tab_objet</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">choix</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">#Parcours de la liste d&#39;objets et les ajouter à objets_pris SI la contrainte </span>
+    <span class="c1">#est respectée, c-a-d masse totale &lt;= capacité</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab_objet</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">mtotale</span> <span class="o">+</span> <span class="n">tab_objet_trie</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;masse&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">capacite</span><span class="p">:</span>
+            <span class="n">objets_pris</span><span class="p">[</span><span class="n">tab_objet_trie</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;index&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">vtotale</span> <span class="o">+=</span> <span class="n">tab_objet_trie</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;valeur&#39;</span><span class="p">]</span>
+            <span class="n">mtotale</span> <span class="o">+=</span> <span class="n">tab_objet_trie</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;masse&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">objets_pris</span><span class="p">,</span> <span class="n">vtotale</span>
+            
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;valeur&#39;</span><span class="p">:</span> <span class="mi">126</span><span class="p">,</span> <span class="s1">&#39;masse&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span> 
+      <span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;valeur&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;masse&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> 
+      <span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;valeur&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;masse&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> 
+      <span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;valeur&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;masse&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> 
+      <span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;valeur&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;masse&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">},</span> 
+      <span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;valeur&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;masse&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">glouton</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">valeur</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>([1, 0, 0, 1, 0, 0], 131)
+</pre></div>
+</div>
+</div>
+</div>
+<p>La réponse ci-dessus s’interprète de la manière suivante: les objets 0 et 3 sont pris; la valeur des objets pris est de 131.</p>
+<div class="section" id="travail">
+<h4>Travail<a class="headerlink" href="#travail" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>A quel endroit du programme, la stratégie gloutonne (<em>faire le choix qui semble le meilleur à chaque étape et ne plus revenir sur ce choix</em>) est bien mise en évidence ?</p></li>
+<li><p>Proposer les modifications nécessaires de manière à ce que le choix d’un objet se fasse selon:</p>
+<ul class="simple">
+<li><p>la masse décroissante:</p></li>
+<li><p>le rapport <span class="math notranslate nohighlight">\(\dfrac{\mathrm{valeur}}{\mathrm{masse}}\)</span> décroissant.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="algo_2_algorithme_knn.html" title="previous page">L’algorithme des k plus proches voisins</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Bruno DARID<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
