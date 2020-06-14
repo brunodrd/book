@@ -12,7 +12,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Introduction: complexité temporelle ou coût d'un algorithme\n",
+    "## Introduction: complexité temporelle ou coût d'un algorithme\n",
     "Pour traiter un même problème, il existe souvent plusieurs algorithmes. Un critère de choix possible est le *temps d'exécution* le plus faible.  \n",
     "**Le temps d'exécution ou complexité temporelle caractérise le coût d'un algorithme**.  \n",
     "En réalité on ne va pas mesurer réellement le temps d'exécution mais plutôt utiliser un *modèle* simplifié, indépendant de la machine utilisée et dont l'unité de mesure du coût est une *opération* (affectation, comparaison, etc..)"
@@ -22,7 +22,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Complexité linéaire\n",
+    "## Complexité linéaire\n",
     "Pour exprimer le coût d'un algorithme, on peut évaluer le nombre d'opérations effectué.  \n",
     "\n",
     "Exemple: le problème est d'afficher les diviseurs d'un entier $n$. On propose l'algorithme naïf ci-dessous, exprimé en python. \n",
@@ -50,7 +50,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Autres cas courants\n",
+    "## Autres cas courants\n",
     "Si la complexité ne **dépend pas** de la taille de l'entrée, l'algorithme a une **complexité constante**.\n",
     "\n",
     "\n",
@@ -74,7 +74,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Quelques exemples\n",
+    "## Quelques exemples\n",
     "Donner la complexité des exemples ci-dessous."
    ]
   },

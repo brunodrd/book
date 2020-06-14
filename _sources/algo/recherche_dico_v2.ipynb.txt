@@ -5,14 +5,14 @@
    "metadata": {},
    "source": [
     "La recherche dichotomique\n",
-    "---"
+    "======================"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Principe et pseudo-code\n",
+    "## Principe et pseudo-code\n",
     "On souhaite rechercher une valeur $x$ dans un tableau $t$ trié (*par ordre croissant pour se fixer les idées*). L'idée principale est de comparer $x$ avec la valeur située au milieu du tableau:  \n",
     "* si elle est plus petite, il suffit de restreindre la recherche dans la partie gauche du tableau;\n",
     "* sinon, on la restreint à la partie droite de $t$.\n",
@@ -46,7 +46,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Implémentation en python\n",
+    "## Implémentation en python\n",
     "**Travail**: compléter l'implémentation en python de cet algorithme."
    ]
   },
@@ -91,7 +91,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Terminaison de l'algorithme"
+    "## Terminaison de l'algorithme"
    ]
   },
   {

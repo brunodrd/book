@@ -97,6 +97,9 @@
   <li class="">
     <a href="algo_2_algorithme_knn.html">L’algorithme des k plus proches voisins</a>
   </li>
+  <li class="">
+    <a href="algo_2_glouton.html">Les algorithmes gloutons</a>
+  </li>
 </ul>
 </nav>
 
@@ -162,9 +165,28 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#introduction-complexite-temporelle-ou-cout-d-un-algorithme" class="nav-link">Introduction: complexité temporelle ou coût d’un algorithme</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#complexite-lineaire" class="nav-link">Complexité linéaire</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#autres-cas-courants" class="nav-link">Autres cas courants</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#quelques-exemples" class="nav-link">Quelques exemples</a>
+        </li>
     
     </ul>
 </nav>
@@ -179,15 +201,14 @@
                 
   <div class="section" id="complexite">
 <h1>Complexité<a class="headerlink" href="#complexite" title="Permalink to this headline">¶</a></h1>
-</div>
 <div class="section" id="introduction-complexite-temporelle-ou-cout-d-un-algorithme">
-<h1>Introduction: complexité temporelle ou coût d’un algorithme<a class="headerlink" href="#introduction-complexite-temporelle-ou-cout-d-un-algorithme" title="Permalink to this headline">¶</a></h1>
+<h2>Introduction: complexité temporelle ou coût d’un algorithme<a class="headerlink" href="#introduction-complexite-temporelle-ou-cout-d-un-algorithme" title="Permalink to this headline">¶</a></h2>
 <p>Pour traiter un même problème, il existe souvent plusieurs algorithmes. Un critère de choix possible est le <em>temps d’exécution</em> le plus faible.<br />
 <strong>Le temps d’exécution ou complexité temporelle caractérise le coût d’un algorithme</strong>.<br />
 En réalité on ne va pas mesurer réellement le temps d’exécution mais plutôt utiliser un <em>modèle</em> simplifié, indépendant de la machine utilisée et dont l’unité de mesure du coût est une <em>opération</em> (affectation, comparaison, etc..)</p>
 </div>
 <div class="section" id="complexite-lineaire">
-<h1>Complexité linéaire<a class="headerlink" href="#complexite-lineaire" title="Permalink to this headline">¶</a></h1>
+<h2>Complexité linéaire<a class="headerlink" href="#complexite-lineaire" title="Permalink to this headline">¶</a></h2>
 <p>Pour exprimer le coût d’un algorithme, on peut évaluer le nombre d’opérations effectué.</p>
 <p>Exemple: le problème est d’afficher les diviseurs d’un entier <span class="math notranslate nohighlight">\(n\)</span>. On propose l’algorithme naïf ci-dessous, exprimé en python.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">diviseurs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -208,7 +229,7 @@ Il n’est pas utile en première NSI d’aller vers un niveau de détail tel qu
 <p><strong>le nombre d’opérations de cet algorithme est proportionnel à n ou encore qu’il a une complexité linéaire</strong>.</p>
 </div>
 <div class="section" id="autres-cas-courants">
-<h1>Autres cas courants<a class="headerlink" href="#autres-cas-courants" title="Permalink to this headline">¶</a></h1>
+<h2>Autres cas courants<a class="headerlink" href="#autres-cas-courants" title="Permalink to this headline">¶</a></h2>
 <p>Si la complexité ne <strong>dépend pas</strong> de la taille de l’entrée, l’algorithme a une <strong>complexité constante</strong>.</p>
 <p>Existe-t-il des algorithmes plus performants que ceux ayant une complexité linéaire ?<br />
 <strong>Oui</strong>, les algorithmes ayant une <strong>complexité logarithmique</strong>. La fonction logarithme est une fonction qui croît très lentement.</p>
@@ -238,7 +259,7 @@ Il n’est pas utile en première NSI d’aller vers un niveau de détail tel qu
 </table>
 </div>
 <div class="section" id="quelques-exemples">
-<h1>Quelques exemples<a class="headerlink" href="#quelques-exemples" title="Permalink to this headline">¶</a></h1>
+<h2>Quelques exemples<a class="headerlink" href="#quelques-exemples" title="Permalink to this headline">¶</a></h2>
 <p>Donner la complexité des exemples ci-dessous.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -260,6 +281,7 @@ Il n’est pas utile en première NSI d’aller vers un niveau de détail tel qu
 </div>
 </div>
 <hr class="docutils" />
+</div>
 </div>
 
 

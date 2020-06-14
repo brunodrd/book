@@ -1,0 +1,254 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Les algorithmes gloutons\n",
+    "====================="
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Introduction\n",
+    "Dans certains problèmes appelés *problèmes d'optimisation* on doit maximiser ou minimiser une fonction en tenant compte d'une ou de plusieurs contraintes. Les algorithmes utilisés font intervenir une série d'étapes, chaque étape proposant un ensemble de choix. \n",
+    "\n",
+    "L'approche naïve consistant à énumérer tous les choix possibles (*brute force*) est rarement utilisable à cause de son coût.  \n",
+    "\n",
+    "L'approche gloutonne, qui sans être nécessairement optimale, est assez rapide et simple à mettre en oeuvre. Il s'agit de **faire le choix qui semble le meilleur à chaque étape** (en espérant que celui-ci mène à une solution optimale) et ne plus revenir sur ce choix. \n",
+    "\n",
+    "Deux exemples sont présentés en première: le problème du rendu de monnaie et le problème du sac à dos."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Le problème du rendu de monnaie\n",
+    "Le problème du rendu de monnaie s'énonce de la façon suivante : étant donné un système de monnaie (*pièces et billets, qu'on confondra ici pour simplifier, exceptés les centimes*), comment rendre une somme donnée de façon optimale, c'est-à-dire avec le nombre minimal de pièces et/ou billets ?\n",
+    "\n",
+    "**Un exemple**: le boulanger doit rendre la monnaie de 9€. \n",
+    "1. Donner toutes les combinaisons possibles ainsi que le nombre de pièces utilisées. \n",
+    "2. Quelle stratégie adopter pour avoir la solution optimale?\n",
+    "\n",
+    "L'algorithme glouton utilisé ici peut s'énoncer comme suit:\n",
+    "\n",
+    "```\n",
+    "fonction rendu_monnaie(montant,monnaie)\n",
+    "//montant: entier\n",
+    "//monnaie: tableau d'entier correspondant aux valeurs du système monétaire utilisé\n",
+    "//trié par ordre croissant\n",
+    "\n",
+    "Affecter à une variable n la taille du tableau monnaie\n",
+    "Initialiser un tableau 'solution' à zéro   //correspond aux pièces utilisées\n",
+    "Pour i allant de n-1 à 0\n",
+    "    Tant que montant >= monnaie[i] \n",
+    "        montant <- montant - monnaie[i]\n",
+    "        solution[i] <- solution[i] + 1\n",
+    "Retourner le tableau solution\n",
+    "```\n",
+    "\n",
+    "3. Coder cet algorithme en python.\n",
+    "4. Quelle est la complexité en temps de cet algorithme ?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def rendu_monnaie(montant, monnaie):\n",
+    "    \"\"\"\n",
+    "    \"\"\"\n",
+    "    n = len(monnaie)\n",
+    "    solution = [0 for _ in range(n)]\n",
+    "    for i in range(n - 1, -1, -1):\n",
+    "        while montant >= monnaie[i]:\n",
+    "            montant = montant - monnaie[i]\n",
+    "            solution[i] = solution[i] + 1\n",
+    "    return solution"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Tests\n",
+    "euros = [1, 2, 5, 10, 20, 50, 100]\n",
+    "assert rendu_monnaie(37, euros) == [0, 1, 1, 1, 1, 0, 0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "5. Soit le système monétaire formé des valeurs suivantes:\n",
+    "```python\n",
+    "monnaie1 = [1, 6, 10]\n",
+    "```\n",
+    "Appeler la fonction `rendu_monnaie(12, monnaie1)`.\n",
+    "Commenter."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "6. Soit le système monétaire formé des valeurs suivantes:\n",
+    "```python\n",
+    "monnaie2 = [2, 3]\n",
+    "```\n",
+    "Que se passerait-il si on appelait (**ne pas le faire**) `rendu_monnaie(4, monnaie2)`. Commenter"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Les euros forment un système *canonique*, c'est-à-dire un système pour lequel l'algorithme glouton donne une solution optimale."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Le problème du sac à dos"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Le problème consiste à remplir un sac à dos ayant une capacité maximale fixée, avec tout ou partie d'un ensemble donné d'objets ayant chacun une masse et une valeur. Les objets mis dans le sac à dos doivent maximiser la valeur totale, sans dépasser la capacité (*masse*) maximale supportée par le sac.\n",
+    "\n",
+    "### S'approprier le problème\n",
+    "Télécharger le fichier [sac-a-dos.zip](https://brdarid.nohost.me/nextcloud/s/WHKozDrAoi44pG3), le décompresser puis, dans le dossier `sac-a-dos` obtenu, ouvrir `applet.html` avec un navigateur. Tester !\n",
+    "\n",
+    "### Vers le codage d'un algorithme en python\n",
+    "Comme cela a été précisé en introduction, appliquer un algorithme glouton revient à faire le **meilleur choix**  à chaque étape. Comment définir ce meilleur choix ? ou, en d'autres termes, quel objet prendre ?\n",
+    "Trois options:  \n",
+    "   * valeur maximale;\n",
+    "   * masse minimale;\n",
+    "   * rapport (valeur / masse) maximal  \n",
+    "\n",
+    "La structure de données envisagée pour modéliser les objets: tableau de p-uplets nommés (*en 1ere NSI des dictionnaires*) ayant pour clés un index, la valeur et la masse).  \n",
+    "On donne ci-dessous un code commenté si le choix se fait suivant la valeur (*ordre décroissant*), ainsi qu'un exemple d'appel de la fonction construite."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def valeur(objet):\n",
+    "    return objet['valeur']\n",
+    "\n",
+    "def glouton(tab_objet, capacite, choix):\n",
+    "    \"\"\"\n",
+    "    \"\"\"    \n",
+    "    vtotale = 0\n",
+    "    mtotale = 0\n",
+    "    objets_pris = [0] * len(tab_objet)\n",
+    "    #Tri des objets (critère de choix à indiquer avec le paramètre key)\n",
+    "    tab_objet_trie = sorted(tab_objet, key=choix, reverse=True)\n",
+    "    #Parcours de la liste d'objets et les ajouter à objets_pris SI la contrainte \n",
+    "    #est respectée, c-a-d masse totale <= capacité\n",
+    "    for i in range(len(tab_objet)):\n",
+    "        if mtotale + tab_objet_trie[i]['masse'] <= capacite:\n",
+    "            objets_pris[tab_objet_trie[i]['index']] = 1\n",
+    "            vtotale += tab_objet_trie[i]['valeur']\n",
+    "            mtotale += tab_objet_trie[i]['masse']\n",
+    "    return objets_pris, vtotale\n",
+    "            "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "obj = [{'index': 0, 'valeur': 126, 'masse': 14}, \n",
+    "      {'index': 1, 'valeur': 32, 'masse': 2}, \n",
+    "      {'index': 2, 'valeur': 20, 'masse': 5}, \n",
+    "      {'index': 3, 'valeur': 5, 'masse': 1}, \n",
+    "      {'index': 4, 'valeur': 18, 'masse': 6}, \n",
+    "      {'index': 5, 'valeur': 80, 'masse': 8}]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "([1, 0, 0, 1, 0, 0], 131)"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "glouton(obj, 15, valeur)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "La réponse ci-dessus s'interprète de la manière suivante: les objets 0 et 3 sont pris; la valeur des objets pris est de 131."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Travail \n",
+    "\n",
+    "1. A quel endroit du programme, la stratégie gloutonne (*faire le choix qui semble le meilleur à chaque étape et ne plus revenir sur ce choix*) est bien mise en évidence ?\n",
+    "\n",
+    "2. Proposer les modifications nécessaires de manière à ce que le choix d'un objet se fasse selon:  \n",
+    "    * la masse décroissante:\n",
+    "    * le rapport $\\dfrac{\\mathrm{valeur}}{\\mathrm{masse}}$ décroissant."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

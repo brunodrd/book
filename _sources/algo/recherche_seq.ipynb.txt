@@ -5,14 +5,14 @@
    "metadata": {},
    "source": [
     "Recherche dans un tableau\n",
-    "---"
+    "======================"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Introduction"
+    "## Introduction"
    ]
   },
   {
@@ -31,14 +31,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Parcours séquentiel d'un tableau"
+    "## Parcours séquentiel d'un tableau"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Recherche d'une occurence"
+    "### Recherche d'une occurence"
    ]
   },
   {
@@ -176,7 +176,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Recherche d'un extrémum"
+    "### Recherche d'un extrémum"
    ]
   },
   {
@@ -274,7 +274,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Calcul d'une moyenne"
+    "### Calcul d'une moyenne"
    ]
   },
   {
