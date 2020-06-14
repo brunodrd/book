@@ -250,26 +250,20 @@
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rendu_monnaie</span><span class="p">(</span><span class="n">montant</span><span class="p">,</span> <span class="n">monnaie</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retourne un tableau d&#39;entiers indiquant le nombre de type de pièces prises;</span>
+<span class="sd">    montant: entier positif</span>
+<span class="sd">    monnaie: tableau d&#39;entiers positif représentant le système monétaire utilisé.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">monnaie</span><span class="p">)</span>
-    <span class="n">solution</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">while</span> <span class="n">montant</span> <span class="o">&gt;=</span> <span class="n">monnaie</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-            <span class="n">montant</span> <span class="o">=</span> <span class="n">montant</span> <span class="o">-</span> <span class="n">monnaie</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">solution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">solution</span>
+    <span class="c1">#Votre code à partir d&#39;ici</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Tests</span>
-<span class="n">euros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<p>Pour tester votre fonction, ajouter une cellule avec le contenu ci-après et exécuter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">euros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">rendu_monnaie</span><span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="n">euros</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
-</div>
-</div>
 </div>
 <ol class="simple">
 <li><p>Soit le système monétaire formé des valeurs suivantes:</p></li>
@@ -313,6 +307,12 @@ On donne ci-dessous un code commenté si le choix se fait suivant la valeur (<em
 
 <span class="k">def</span> <span class="nf">glouton</span><span class="p">(</span><span class="n">tab_objet</span><span class="p">,</span> <span class="n">capacite</span><span class="p">,</span> <span class="n">choix</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Renvoie un p-uplet formé d&#39;un tableau de solution (0 ou 1 suivant que l&#39;objet est pris ou pas) </span>
+<span class="sd">    et de la valeur totale des objets pris.</span>
+<span class="sd">    tab_objet: tableau de p-uplets nommés (dictionnaire), chacun représentant un objet avec les </span>
+<span class="sd">    clés &#39;index&#39;, &#39;valeur&#39; et &#39;masse&#39;;</span>
+<span class="sd">    capacite: entier, contrainte (ici masse maxi)</span>
+<span class="sd">    choix: fonction (utile au tri des objet, voir ci-dessus)</span>
 <span class="sd">    &quot;&quot;&quot;</span>    
     <span class="n">vtotale</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">mtotale</span> <span class="o">=</span> <span class="mi">0</span>

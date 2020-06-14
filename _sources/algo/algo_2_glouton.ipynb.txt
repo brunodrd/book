@@ -62,25 +62,23 @@
    "source": [
     "def rendu_monnaie(montant, monnaie):\n",
     "    \"\"\"\n",
+    "    Retourne un tableau d'entiers indiquant le nombre de type de pièces prises;\n",
+    "    montant: entier positif\n",
+    "    monnaie: tableau d'entiers positif représentant le système monétaire utilisé.\n",
     "    \"\"\"\n",
     "    n = len(monnaie)\n",
-    "    solution = [0 for _ in range(n)]\n",
-    "    for i in range(n - 1, -1, -1):\n",
-    "        while montant >= monnaie[i]:\n",
-    "            montant = montant - monnaie[i]\n",
-    "            solution[i] = solution[i] + 1\n",
-    "    return solution"
+    "    #Votre code à partir d'ici"
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": 6,
+   "cell_type": "markdown",
    "metadata": {},
-   "outputs": [],
    "source": [
-    "#Tests\n",
+    "Pour tester votre fonction, ajouter une cellule avec le contenu ci-après et exécuter.\n",
+    "```python\n",
     "euros = [1, 2, 5, 10, 20, 50, 100]\n",
-    "assert rendu_monnaie(37, euros) == [0, 1, 1, 1, 1, 0, 0]"
+    "assert rendu_monnaie(37, euros) == [0, 1, 1, 1, 1, 0, 0]\n",
+    "```"
    ]
   },
   {
@@ -151,6 +149,12 @@
     "\n",
     "def glouton(tab_objet, capacite, choix):\n",
     "    \"\"\"\n",
+    "    Renvoie un p-uplet formé d'un tableau de solution (0 ou 1 suivant que l'objet est pris ou pas) \n",
+    "    et de la valeur totale des objets pris.\n",
+    "    tab_objet: tableau de p-uplets nommés (dictionnaire), chacun représentant un objet avec les \n",
+    "    clés 'index', 'valeur' et 'masse';\n",
+    "    capacite: entier, contrainte (ici masse maxi)\n",
+    "    choix: fonction (utile au tri des objet, voir ci-dessus)\n",
     "    \"\"\"    \n",
     "    vtotale = 0\n",
     "    mtotale = 0\n",
