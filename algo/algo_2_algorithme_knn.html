@@ -237,7 +237,7 @@
 <h1>L’algorithme des k plus proches voisins<a class="headerlink" href="#l-algorithme-des-k-plus-proches-voisins" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction-principe">
 <h2>Introduction - principe<a class="headerlink" href="#introduction-principe" title="Permalink to this headline">¶</a></h2>
-<p>L’algorithme des <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins (<span class="math notranslate nohighlight">\(k\)</span><em>nn en anglais pour k nearest neighbors</em>) appartient à la famille des algorithmes d’apprentissage automatique (en anglais <em>machine learning</em>). L’apprentissage automatique (ou <em>machine learning</em>) peut être vu comme l’extraction de connaissances à partir de données. Les champs d’application sont très vastes (recommandations ou publicités ciblés, identification de caractères manuscrits, détection d’activités frauduleuses dans des transactions bancaires, lutte anti-spam etc.)</p>
+<p>L’algorithme des <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins (<span class="math notranslate nohighlight">\(k\)</span><em>nn</em> en anglais pour <em>k nearest neighbors</em>) appartient à la famille des algorithmes d’apprentissage automatique (en anglais <em>machine learning</em>). L’apprentissage automatique peut être vu comme l’extraction de connaissances à partir de données. Les champs d’application sont très vastes (recommandations ou publicités ciblés, identification de caractères manuscrits, détection d’activités frauduleuses dans des transactions bancaires, lutte anti-spam etc.)</p>
 <p>L’algorithme a besoin d’un ensemble de données <span class="math notranslate nohighlight">\(E\)</span>. Chacune de ces données est caractérisée par sa <em>catégorie</em>, on dit aussi sa <em>classe</em>. Il s’agit d’associer une donnée nouvelle <span class="math notranslate nohighlight">\(u\)</span>, <strong>n’appartenant pas à</strong> <span class="math notranslate nohighlight">\(E\)</span> à une catégorie en se basant sur la catégorie majoritaire chez ses <span class="math notranslate nohighlight">\(k\)</span> plus proches voisins, <span class="math notranslate nohighlight">\(k\)</span> étant un entier positif. Décrit de cette façon, il s’agit ici d’un <strong>problème de classification</strong>. Pour réaliser cet objectif, on a besoin d’une fonction qui donne la <em>distance</em> entre deux données.</p>
 <p><em>Principe</em></p>
 <ul class="simple">
@@ -259,7 +259,11 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./cours_complexite_1/data/personnages.csv&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+
+<span class="c1">#dossier = &#39;data/&#39;</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;./cours_complexite_1/data/&#39;</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dossier</span> <span class="o">+</span> <span class="s1">&#39;personnages.csv&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
 <span class="n">personnages</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)]</span>
 <span class="c1">#Contenu</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
@@ -370,7 +374,8 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./cours_complexite_1/data/iris.csv&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dossier</span> <span class="o">+</span> <span class="s1">&#39;iris.csv&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
 <span class="n">tabiris</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tabiris</span><span class="p">))</span>
@@ -393,7 +398,7 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
 <p>Représentons graphiquement <code class="docutils literal notranslate"><span class="pre">petal_length</span></code> en fonction de <code class="docutils literal notranslate"><span class="pre">petal_width</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Conversion des longueurs en flottant - util pour la suite</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Conversion des longueurs en flottant - utile pour la suite</span>
 <span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">tabiris</span><span class="p">:</span>
     <span class="n">ligne</span><span class="p">[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ligne</span><span class="p">[</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">])</span>
     <span class="n">ligne</span><span class="p">[</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ligne</span><span class="p">[</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">])</span>
@@ -499,8 +504,12 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
 <p>Il est difficile de donner une réponse! Pour se prononcer, on va rechercher la catégorie des <span class="math notranslate nohighlight">\(k=5\)</span> plus proches voisins de notre iris inconnue.</p>
 <ol class="simple">
 <li><p>Expliquer ce que réalise la boucle <code class="docutils literal notranslate"><span class="pre">for</span></code> de la fonction <code class="docutils literal notranslate"><span class="pre">knn(data,</span> <span class="pre">X,</span> <span class="pre">k)</span></code> qui prend en argument un tableau de données <code class="docutils literal notranslate"><span class="pre">data</span></code>, un tableau de coordonnées <code class="docutils literal notranslate"><span class="pre">X</span></code> de notre iris inconnue et un entier k.</p></li>
-<li><p>Expliquer les lignes 25 et 26.</p></li>
+<li><p>Expliquer les lignes</p></li>
 </ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tdist</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">plusproche</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">tdist</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">knn</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>

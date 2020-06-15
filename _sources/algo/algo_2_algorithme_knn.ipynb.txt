@@ -13,7 +13,7 @@
    "metadata": {},
    "source": [
     "## Introduction - principe\n",
-    "L’algorithme des $k$ plus proches voisins ($k$*nn en anglais pour k nearest neighbors*) appartient à la famille des algorithmes d’apprentissage automatique (en anglais *machine learning*). L'apprentissage automatique (ou *machine learning*) peut être vu comme l'extraction de connaissances à partir de données. Les champs d'application sont très vastes (recommandations ou publicités ciblés, identification de caractères manuscrits, détection d'activités frauduleuses dans des transactions bancaires, lutte anti-spam etc.)\n",
+    "L’algorithme des $k$ plus proches voisins ($k$*nn* en anglais pour *k nearest neighbors*) appartient à la famille des algorithmes d’apprentissage automatique (en anglais *machine learning*). L'apprentissage automatique peut être vu comme l'extraction de connaissances à partir de données. Les champs d'application sont très vastes (recommandations ou publicités ciblés, identification de caractères manuscrits, détection d'activités frauduleuses dans des transactions bancaires, lutte anti-spam etc.)\n",
     "\n",
     "L'algorithme a besoin d'un ensemble de données $E$. Chacune de ces données est caractérisée par sa *catégorie*, on dit aussi sa *classe*. Il s'agit d'associer une donnée nouvelle $u$, **n'appartenant pas à** $E$ à une catégorie en se basant sur la catégorie majoritaire chez ses $k$ plus proches voisins, $k$ étant un entier positif. Décrit de cette façon, il s'agit ici d'un **problème de classification**. Pour réaliser cet objectif, on a besoin d'une fonction qui donne la *distance* entre deux données.\n",
     "\n",
@@ -67,7 +67,11 @@
     "import csv\n",
     "import matplotlib.pyplot as plt\n",
     "\n",
-    "f = open('./cours_complexite_1/data/personnages.csv', newline='', encoding='utf8')\n",
+    "\n",
+    "#dossier = 'data/'\n",
+    "dossier = './cours_complexite_1/data/'\n",
+    "\n",
+    "f = open(dossier + 'personnages.csv', newline='', encoding='utf8')\n",
     "personnages = [dict(row) for row in csv.DictReader(f, delimiter=';')]\n",
     "#Contenu\n",
     "for i in range(4):\n",
@@ -96,7 +100,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 2,
    "metadata": {},
    "outputs": [
     {
@@ -154,7 +158,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [
     {
@@ -222,7 +226,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 31,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -241,7 +245,8 @@
    "source": [
     "import csv\n",
     "\n",
-    "f = open('./cours_complexite_1/data/iris.csv', newline='', encoding='utf8')\n",
+    "\n",
+    "f = open(dossier + 'iris.csv', newline='', encoding='utf8')\n",
     "tabiris = [dict(row) for row in csv.DictReader(f, delimiter=',')]\n",
     "\n",
     "print(len(tabiris))\n",
@@ -258,7 +263,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 49,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -275,7 +280,7 @@
     }
    ],
    "source": [
-    "#Conversion des longueurs en flottant - util pour la suite\n",
+    "#Conversion des longueurs en flottant - utile pour la suite\n",
     "for ligne in tabiris:\n",
     "    ligne['sepal_length'] = float(ligne['sepal_length'])\n",
     "    ligne['sepal_width'] = float(ligne['sepal_width'])\n",
@@ -318,7 +323,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 28,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -348,7 +353,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -371,7 +376,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 50,
+   "execution_count": 8,
    "metadata": {},
    "outputs": [
     {
@@ -415,12 +420,16 @@
     "Il est difficile de donner une réponse! Pour se prononcer, on va rechercher la catégorie des $k=5$ plus proches voisins de notre iris inconnue.\n",
     "\n",
     "1. Expliquer ce que réalise la boucle `for` de la fonction `knn(data, X, k)` qui prend en argument un tableau de données `data`, un tableau de coordonnées `X` de notre iris inconnue et un entier k. \n",
-    "2. Expliquer les lignes 25 et 26."
+    "2. Expliquer les lignes \n",
+    "```python\n",
+    "tdist.sort(key=plusproche)\n",
+    "return tdist[:k]\n",
+    "```"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 86,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -468,7 +477,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 89,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -481,7 +490,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 95,
+   "execution_count": 11,
    "metadata": {},
    "outputs": [
     {
@@ -490,7 +499,7 @@
        "['versicolor', 'setosa', 'setosa', 'versicolor', 'versicolor']"
       ]
      },
-     "execution_count": 95,
+     "execution_count": 11,
      "metadata": {},
      "output_type": "execute_result"
     }
