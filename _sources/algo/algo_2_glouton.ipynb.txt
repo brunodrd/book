@@ -125,8 +125,49 @@
     "Le problème consiste à remplir un sac à dos ayant une capacité maximale fixée, avec tout ou partie d'un ensemble donné d'objets ayant chacun une masse et une valeur. Les objets mis dans le sac à dos doivent maximiser la valeur totale, sans dépasser la capacité (*masse*) maximale supportée par le sac.\n",
     "\n",
     "### S'approprier le problème\n",
-    "Télécharger le fichier [sac-a-dos.zip](https://brdarid.nohost.me/nextcloud/s/WHKozDrAoi44pG3), le décompresser puis, dans le dossier `sac-a-dos` obtenu, ouvrir `applet.html` avec un navigateur. Tester !\n",
+    "Pour découvrir le problème du sac à dos en s'amusant, exécuter l'applet ci-dessous. En cas de problème, procéder comme suit:  \n",
+    "Télécharger le fichier [sac-a-dos.zip](https://brdarid.nohost.me/nextcloud/s/WHKozDrAoi44pG3), le décompresser puis, dans le dossier `sac-a-dos` obtenu, ouvrir `applet.html` avec un navigateur. Tester !"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        <iframe\n",
+       "            width=\"870px\"\n",
+       "            height=\"540px\"\n",
+       "            src=\"./sac-a-dos/applet.html\"\n",
+       "            frameborder=\"0\"\n",
+       "            allowfullscreen\n",
+       "        ></iframe>\n",
+       "        "
+      ],
+      "text/plain": [
+       "<IPython.lib.display.IFrame at 0x7f83041108b0>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "from IPython.display import IFrame\n",
+    "from IPython.core.display import display\n",
     "\n",
+    "#dossier = './cours_complexite_1/algo/sac-a-dos/'\n",
+    "dossier = './sac-a-dos/'\n",
+    "display(IFrame(dossier + 'applet.html', '870px', '540px'))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
     "### Vers le codage d'un algorithme en python\n",
     "Comme cela a été précisé en introduction, appliquer un algorithme glouton revient à faire le **meilleur choix**  à chaque étape. Comment définir ce meilleur choix ? ou, en d'autres termes, quel objet prendre ?\n",
     "Trois options:  \n",
