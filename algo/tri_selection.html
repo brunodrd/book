@@ -165,9 +165,38 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#principe" class="nav-link">Principe</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#algorithme-et-exemple-d-implementation-en-python" class="nav-link">Algorithme et exemple d’implémentation en python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#validite-de-l-algorithme" class="nav-link">Validité de l’algorithme</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#complexite-en-temps" class="nav-link">Complexité en temps</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#application-directe" class="nav-link">Application directe</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#exercice-temps-d-execution" class="nav-link">Exercice: temps d’exécution</a>
+        </li>
     
     </ul>
 </nav>
@@ -182,14 +211,13 @@
                 
   <div class="section" id="tri-par-selection">
 <h1>Tri par sélection<a class="headerlink" href="#tri-par-selection" title="Permalink to this headline">¶</a></h1>
-</div>
 <div class="section" id="principe">
-<h1>Principe<a class="headerlink" href="#principe" title="Permalink to this headline">¶</a></h1>
+<h2>Principe<a class="headerlink" href="#principe" title="Permalink to this headline">¶</a></h2>
 <p>On commence par rechercher le plus petit élement du tableau puis on l’échange avec le premier élement. Ensuite, on cherche le deuxième plus petit élement et on l’échange avec le deuxième élément du tableau et ainsi de suite jusqu’à ce que le tableau soit entièrement trié.</p>
 <p>Voir une animation à cette <a class="reference external" href="http://lwh.free.fr/pages/algo/tri/tri_selection.html">adresse</a></p>
 </div>
 <div class="section" id="algorithme-et-exemple-d-implementation-en-python">
-<h1>Algorithme et exemple d’implémentation en python<a class="headerlink" href="#algorithme-et-exemple-d-implementation-en-python" title="Permalink to this headline">¶</a></h1>
+<h2>Algorithme et exemple d’implémentation en python<a class="headerlink" href="#algorithme-et-exemple-d-implementation-en-python" title="Permalink to this headline">¶</a></h2>
 <p>On peut formaliser l’algorithme du tri par sélection avec la procédure décrite ci-dessous.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -240,7 +268,7 @@
 </div>
 </div>
 <div class="section" id="validite-de-l-algorithme">
-<h1>Validité de l’algorithme<a class="headerlink" href="#validite-de-l-algorithme" title="Permalink to this headline">¶</a></h1>
+<h2>Validité de l’algorithme<a class="headerlink" href="#validite-de-l-algorithme" title="Permalink to this headline">¶</a></h2>
 <p>La situation au <span class="math notranslate nohighlight">\(i^{ème}\)</span> tour de boucle peut être représentée de la manière suivante:</p>
 <a class="reference internal image-reference" href="../_images/tri_selection.png"><img alt="tableau" src="../_images/tri_selection.png" style="width: 320px; height: 110px;" /></a>
 <p>Tous les éléments d’indice compris entre 0 et <span class="math notranslate nohighlight">\(i-1\)</span> inclus sont triés <strong>et</strong> ils sont tous inférieurs ou égaux aux éléments de la partie non triée, entre <span class="math notranslate nohighlight">\(i\)</span> et <span class="math notranslate nohighlight">\(n-1\)</span>.<br />
@@ -248,7 +276,7 @@ Il s’agit d’un <strong>invariant</strong> pour l’algorithme <code class="d
 La terminaison est assurée car l’algorithme fait intervenir deux boucles bornées (boucle <code class="docutils literal notranslate"><span class="pre">for</span></code>).</p>
 </div>
 <div class="section" id="complexite-en-temps">
-<h1>Complexité en temps<a class="headerlink" href="#complexite-en-temps" title="Permalink to this headline">¶</a></h1>
+<h2>Complexité en temps<a class="headerlink" href="#complexite-en-temps" title="Permalink to this headline">¶</a></h2>
 <p>Notons <span class="math notranslate nohighlight">\(n\)</span> la taille du tableau d’entrée. Détaillons les opérations exécutées par cette fonction:</p>
 <ul class="simple">
 <li><p>1 affectation (<em>en temps constant</em>);</p></li>
@@ -271,8 +299,9 @@ La terminaison est assurée car l’algorithme fait intervenir deux boucles born
 <p>Au final, le nombre d’opérations effectuées s’exprimera avec une fonction de <span class="math notranslate nohighlight">\(n\)</span> de la forme <span class="math notranslate nohighlight">\(an^2+bn+c\)</span>, avec <span class="math notranslate nohighlight">\(a, b, c\)</span> des constantes.</p>
 <p><strong>La complexité en temps du tri par sélection est quadratique</strong>.</p>
 <div class="section" id="application-directe">
-<h2>Application directe<a class="headerlink" href="#application-directe" title="Permalink to this headline">¶</a></h2>
+<h3>Application directe<a class="headerlink" href="#application-directe" title="Permalink to this headline">¶</a></h3>
 <p>En supposant que le tri par sélection prenne un temps directement proportionnel à <span class="math notranslate nohighlight">\(n^2\)</span> et qu’un tri de 16000 valeurs nécessite 6.8 s. Calculer le temps nécessaire pour le tri d’un million de valeurs avec cet algorithme.</p>
+</div>
 </div>
 <div class="section" id="exercice-temps-d-execution">
 <h2>Exercice: temps d’exécution<a class="headerlink" href="#exercice-temps-d-execution" title="Permalink to this headline">¶</a></h2>
@@ -290,7 +319,6 @@ Le code qui suit permet par exemple d’afficher le temps pris par l’exécutio
 <li><p>Construire un tableau de 3000 entiers de 0 à 2999, bornes comprises. Mesurer le temps d’exécution du programme de tri sélection et de tri insertion pour trier ce tableau. Quel commentaire peut-on faire concernant les deux résultats ?</p></li>
 <li><p>Mesurer sur un tableau de 100000 entiers, choisis de manière aléatoire entre 1 et 100000, le temps d’exécution de la méthode <code class="docutils literal notranslate"><span class="pre">sort()</span></code> de python. Syntaxe: <code class="docutils literal notranslate"><span class="pre">t.sort()</span></code>. Commentez.</p></li>
 </ol>
-<hr class="docutils" />
 </div>
 </div>
 

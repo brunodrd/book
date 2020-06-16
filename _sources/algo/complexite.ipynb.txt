@@ -98,13 +98,6 @@
     "            print(i * j, end=\" \")\n",
     "        print()"
    ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "---"
-   ]
   }
  ],
  "metadata": {
