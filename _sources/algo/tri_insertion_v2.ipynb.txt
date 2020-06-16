@@ -120,18 +120,11 @@
     "fois. Les instructions en dehors de la boucle `while` étant exécutées $n-1$ fois.\n",
     "Il est alors clair que le temps d'exécution total sera une fonction du type $a'\\times n^2 + b'\\times n +c'$. \n",
     "\n",
-    "On dit alors que la *complexité* dans le pire des cas du tri par insertion est **quadratique** (*on rencontre quelques fois l'expression \"la complexité est en* $O(n²)$\").\n",
+    "On dit alors que la *complexité* dans le pire des cas du tri par insertion est **quadratique** (*on rencontre quelques fois l'expression \"la complexité est en* $O(n^2)$\").\n",
     "\n",
     "```{note}\n",
     "Voir le document \"Complexité\" en complément\n",
     "```"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "---"
    ]
   }
  ],

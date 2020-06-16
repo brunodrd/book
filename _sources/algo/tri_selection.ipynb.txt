@@ -12,7 +12,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Principe\n",
+    "## Principe\n",
     "On commence par rechercher le plus petit élement du tableau puis on l'échange avec le premier élement. Ensuite, on cherche le deuxième plus petit élement et on l'échange avec le deuxième élément du tableau et ainsi de suite jusqu'à ce que le tableau soit entièrement trié.  \n",
     "\n",
     "Voir une animation à cette [adresse](http://lwh.free.fr/pages/algo/tri/tri_selection.html)"
@@ -22,7 +22,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Algorithme et exemple d'implémentation en python\n",
+    "## Algorithme et exemple d'implémentation en python\n",
     "On peut formaliser l'algorithme du tri par sélection avec la procédure décrite ci-dessous.  \n",
     "\n",
     "```{note}\n",
@@ -47,7 +47,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 1,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -85,7 +85,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Validité de l'algorithme\n",
+    "## Validité de l'algorithme\n",
     "La situation au $i^{ème}$ tour de boucle peut être représentée de la manière suivante:\n",
     "\n",
     "```{image} ../img/tri_selection.png\n",
@@ -103,7 +103,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Complexité en temps\n",
+    "## Complexité en temps\n",
     "Notons $n$ la taille du tableau d'entrée. Détaillons les opérations exécutées par cette fonction:\n",
     "* 1 affectation (*en temps constant*);\n",
     "* $n-1$ affectations (à l'intérieur de la boucle externe);\n",
@@ -134,7 +134,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Application directe\n",
+    "### Application directe\n",
     "En supposant que le tri par sélection prenne un temps directement proportionnel à $n^2$ et qu'un tri de 16000 valeurs nécessite 6.8 s. Calculer le temps nécessaire pour le tri d'un million de valeurs avec cet algorithme."
    ]
   },
@@ -158,11 +158,11 @@
    ]
   },
   {
-   "cell_type": "markdown",
+   "cell_type": "code",
+   "execution_count": null,
    "metadata": {},
-   "source": [
-    "---"
-   ]
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {
