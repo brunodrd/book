@@ -287,7 +287,30 @@ Commenter.</p>
 <p>Le problème consiste à remplir un sac à dos ayant une capacité maximale fixée, avec tout ou partie d’un ensemble donné d’objets ayant chacun une masse et une valeur. Les objets mis dans le sac à dos doivent maximiser la valeur totale, sans dépasser la capacité (<em>masse</em>) maximale supportée par le sac.</p>
 <div class="section" id="s-approprier-le-probleme">
 <h3>S’approprier le problème<a class="headerlink" href="#s-approprier-le-probleme" title="Permalink to this headline">¶</a></h3>
-<p>Télécharger le fichier <a class="reference external" href="https://brdarid.nohost.me/nextcloud/s/WHKozDrAoi44pG3">sac-a-dos.zip</a>, le décompresser puis, dans le dossier <code class="docutils literal notranslate"><span class="pre">sac-a-dos</span></code> obtenu, ouvrir <code class="docutils literal notranslate"><span class="pre">applet.html</span></code> avec un navigateur. Tester !</p>
+<p>Pour découvrir le problème du sac à dos en s’amusant, exécuter l’applet ci-dessous. En cas de problème, procéder comme suit:<br />
+Télécharger le fichier <a class="reference external" href="https://brdarid.nohost.me/nextcloud/s/WHKozDrAoi44pG3">sac-a-dos.zip</a>, le décompresser puis, dans le dossier <code class="docutils literal notranslate"><span class="pre">sac-a-dos</span></code> obtenu, ouvrir <code class="docutils literal notranslate"><span class="pre">applet.html</span></code> avec un navigateur. Tester !</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="c1">#dossier = &#39;./cours_complexite_1/algo/sac-a-dos/&#39;</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;./sac-a-dos/&#39;</span>
+<span class="n">display</span><span class="p">(</span><span class="n">IFrame</span><span class="p">(</span><span class="n">dossier</span> <span class="o">+</span> <span class="s1">&#39;applet.html&#39;</span><span class="p">,</span> <span class="s1">&#39;870px&#39;</span><span class="p">,</span> <span class="s1">&#39;540px&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="870px"
+    height="540px"
+    src="./sac-a-dos/applet.html"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
+</div>
 </div>
 <div class="section" id="vers-le-codage-d-un-algorithme-en-python">
 <h3>Vers le codage d’un algorithme en python<a class="headerlink" href="#vers-le-codage-d-un-algorithme-en-python" title="Permalink to this headline">¶</a></h3>
