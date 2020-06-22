@@ -291,7 +291,6 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
 {&#39;Nom&#39;: &#39;Louly&#39;, &#39;Force&#39;: &#39;15&#39;, &#39;Courage&#39;: &#39;18&#39;, &#39;Type&#39;: &#39;Chevalier&#39;}
 </pre></div>
 </div>
-<img alt="../_images/algo_2_algorithme_knn_3_1.png" src="../_images/algo_2_algorithme_knn_3_1.png" />
 </div>
 </div>
 <p>Supposons maintenant que l’on ait un nouveau personnage de <code class="docutils literal notranslate"><span class="pre">Force</span> <span class="pre">=</span> <span class="pre">12</span></code> et <code class="docutils literal notranslate"><span class="pre">Courage</span> <span class="pre">=</span> <span class="pre">12.5</span></code>. Plaçons le sur le graphique en exécutant le code de la cellule suivante. A partir du type de ses <span class="math notranslate nohighlight">\(k=5\)</span> voisins les plus proches, essayons de prévoir son type. Le problème des distances sera résolu en utilisant le cercle gris sur la figure.</p>
@@ -315,9 +314,6 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/algo_2_algorithme_knn_5_0.png" src="../_images/algo_2_algorithme_knn_5_0.png" />
 </div>
 </div>
 <p>Parmi les 5 plus proches voisins du personnage inconnu, 4 sont des fantassins et 1 est un chevalier. Il est <strong>probable que l’inconnu soit un fantassin</strong>. La valeur de <span class="math notranslate nohighlight">\(k\)</span> a été donnée de manière arbitraire.</p>
@@ -345,9 +341,6 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/algo_2_algorithme_knn_9_0.png" src="../_images/algo_2_algorithme_knn_9_0.png" />
 </div>
 </div>
 <ol class="simple">
@@ -422,9 +415,6 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/algo_2_algorithme_knn_15_0.png" src="../_images/algo_2_algorithme_knn_15_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="calcul-de-distance">
@@ -453,6 +443,12 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/algo_2_algorithme_knn_17_0.png" src="../_images/algo_2_algorithme_knn_17_0.png" />
+<img alt="../_images/algo_2_algorithme_knn_17_1.png" src="../_images/algo_2_algorithme_knn_17_1.png" />
+<img alt="../_images/algo_2_algorithme_knn_17_2.png" src="../_images/algo_2_algorithme_knn_17_2.png" />
+<img alt="../_images/algo_2_algorithme_knn_17_3.png" src="../_images/algo_2_algorithme_knn_17_3.png" />
 </div>
 </div>
 <div class="section" id="application">
@@ -497,9 +493,6 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/algo_2_algorithme_knn_22_0.png" src="../_images/algo_2_algorithme_knn_22_0.png" />
-</div>
 </div>
 <p>Il est difficile de donner une réponse! Pour se prononcer, on va rechercher la catégorie des <span class="math notranslate nohighlight">\(k=5\)</span> plus proches voisins de notre iris inconnue.</p>
 <ol class="simple">
@@ -540,6 +533,9 @@ Commençons par donner un aperçu du contenu du fichier puis une représentation
     <span class="k">return</span> <span class="n">tdist</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/algo_2_algorithme_knn_24_0.png" src="../_images/algo_2_algorithme_knn_24_0.png" />
 </div>
 </div>
 </div>
